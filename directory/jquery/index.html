@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta tags -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="author" content="ვასილ ნადირაძე"/>
+    <meta name="description" content="jQuery/Ajax-ის ცნობარი, განმარტებები, მაგალითები">
+    <meta name="keywords"  content="jQuery/Ajax,ცნობარი,ვებ-დეველოპმენტი,დეველოპმენტი,საიტი,საიტები" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../../public/styles/style.css" >
+    <style type="text/css">@font-face {font-family: "First Font"; src: url(../../public/fonts/first.ttf) format("truetype"); }</style>
+    <!-- Title -->
+    <title>jQuery/Ajax ცნობარი</title>
+</head>
+<body >
+
+<BR><BR>
+
+<div class="content">
+<dl class="faqs">
+
+
+
+<dt>1. რა არის jQuery ?</dt>
+<dd class='answer'>
+
+    <h2><strong>წერე ნაკლები, გააკეთე მეტი ... :)</strong></h2>
+
+    jQuery არის javascript-ის ბიბლიოთეკა, მისი დახმარებით უფრო ადვილი ხდება  წვდომა DOM-ის
+    ელემენტებთან, მათ ატრიბუტებთან და შიგთავსთან. jQuery აგრეთვე არის მოსახერხებელი API (Aplication
+    Programing Interface ანუ აპლიკაციების პროგრამირების ინტეფეისი) Ajax - თან სამუშაოდ.
+    <br><br>
+    დასახელებიდანაც ჩანს, რომ jQuery არის მოთხოვნებზე(query) აგებული მექანიზმი. DOM - ის ელემენტების
+    იდენტიფიკაციისათვის მოთხოვნებში გამოიყენება CSS სელექტორები (id,class და ა.შ). jQuery-ს ძირითადი
+    მახასიათებლები და უპირატესობები არის:
+    <ul>
+        <li>HTML/DOM მანიპულაცია</li>
+        <li>CSS მანიპულაცია</li>
+        <li>HTML მოვლენების მეთოდები</li>
+        <li>ეფექტები და ანიმაციები</li>
+        <li>Ajax</li>
+    </ul>
+
+    <h2><strong>jQuery-ს ჩასმა პროექტში</strong></h2>
+
+    პროექტში ბიბლიოთეკა jQuery-ს ჩასართავად  ან უნდა <a href="https://www.jQuery.com">გადმოვწეროთ</a>
+    იგი, ან უნდა ჩავსვათ CDN დან.
+
+    <h2><strong>jQuery-ს გადმოწერა</strong></h2>
+
+    არსებობს jQuery-ს გადმოსაწერი ორი ვარიანტი:
+    <ul>
+        <li>
+            Production version - ეს არის უკვე გაშვებულ, დაჰოსტილ საიტთან სამუშაო ვერსია, მასში
+            წაშლილია აბსოლიტურად ყველა "ზედმეტი" სიმბოლო, ახალი ხაზები, ცარიელი ადგილები ანუ
+            ე.წ "პრობელები" და ა.შ,  ასე, რომ ამ ვერსიის წაკითხვა შეუძლებელია, ფაქტიურად ერთ
+            ხაზზე წერია ყველაფერი.
+        </li>
+        <li>
+            Development version - ეს არის საიტის კეთებისას გამოსაყენებელი ვერსია, ჩაწერილია გაცილებით
+            გასაგები და წაკითხვადი ფორმით, დართული აქვს კომენტარები და ა.შ
+        </li>
+    </ul>
+    გადმოწერილი ბიბლიოთეკა არის ცალკე ფაილი და მას უნდა დავუკავშიორდეთ html &lt;script > ტეგით
+    (ტეგი უნდა ჩაჯდეს &lt;head > სექციაში)
+
+            <code>
+                &lt;head><br>
+                   &nbsp; &nbsp;&nbsp;&lt;script src="jQuery-3.1.1.min.js">&lt;/script ><br>
+                &lt;/head>
+            </code>
+
+    <h2><strong>jQuery CDN</strong></h2>
+
+    თუ არ გვინდა ბიბლიოთეკის გადმოწერა მაშინ შეგვიძლია ის ჩავსვათ CDN - დან (Content Delivery
+    Network ანუ ინფორმაციის მიწოდების ქსელი).
+            <code>
+                &lt;head><br>
+                   &nbsp;&nbsp;&nbsp;&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">&lt;/script><br>
+                &lt;/head>
+            </code>
+
+    <strong>ბიბლიოთეკის ჩასმის გარდა სავარაუდოდ გვექნება ჩვენი საკუთარი jS გაფართოების ფაილიც,
+        რომელშიც ავკრეფთ ჩვენს jQuery კოდს, მაგალითად myscript.js,  ეს ფაილიც უნდა დავაკავშიროთ
+        მიმდინარე html გვერდს ასევე html &lt;script > ტეგის საშუალებით, მაგრამ აქ ყურადღება უნდა მიექცეს
+        შემდეგ ფაქტს : იმისათვის რომ myscript.js ფაილმა იმუშაოს მისი ჩართვა უნდა მოხდეს თავად
+        ბიბლიოთეკის შემდეგ</strong>
+            <code>
+                &lt;head><br>
+                   &nbsp; &nbsp;&nbsp;&lt;script src="jQuery-3.1.1.min.js">&lt;/script ><br>
+                   &nbsp; &nbsp;&nbsp;&lt;script src="myscript.js">&lt;/script ><br>
+                &lt;/head>
+            </code>
+
+</dd>
+
+<dt>2. სინტაქსი</dt>
+<dd class='answer'>
+
+    <h2><strong>jQuery სინტაქსი</strong></h2>
+
+    jQuery სინტაქსი შექმნილია  HTML ელემენტების ამორჩევისა და მათზე რაიმე ქმედების ჩატარებისათვის. ძირითადი
+    სინტაქსი არის <strong>$(selector).action()</strong>, სადაც :
+    <ul>
+        <li>
+            <strong>$</strong> - jQuery-სთან წცდომის აღმნიშვნელი ნიშანი, მის მაგივრად შეიძლება გამოვიყენოთ
+            ჩანაწერი jQuery,  ანუ jQuery = $.
+        </li>
+        <li>
+            <strong>(selector)</strong> - რომელიმე HTML ელემენტის "მოთხოვნა (ან პოვნა)".
+        </li>
+        <li>
+            <strong>action()</strong> - ქმედება, რომელიც უნდა შესრულდეს ამორჩეულ HTML ელემენტზე.
+        </li>
+    </ul>
+    კონკრეტული მაგალითები :
+    <ul>
+        <li>
+            <strong>$(this).hide()</strong> - დამალავს მიმდინარე ელემენტს.
+        </li>
+        <li>
+            <strong>$("p").hide()</strong> - დამალავს ყველა &lt;p > ელემენტს.
+        </li>
+        <li>
+            <strong>$(".test").hide()</strong> - დამალავს ყველა ელემენტს, რომელთა კლასიცაა test.
+        </li>
+        <li>
+            <strong>$("#test").hide()</strong> - დამალავს ყველა ელემენტს, რომელთა id არის test.
+        </li>
+    </ul>
+
+    <h2><strong>Document Ready მოვლენა</strong></h2>
+
+    განვიხილოთ ასეთი ჩანაწერი:
+            <code>
+                $(document).ready(function(){ <br><br>
+
+                 &nbsp;&nbsp;  // jQuery მეთოდები მოთავსდება აქ...<br><br>
+
+                });
+            </code>
+    ეს ჩანაწერი ნიშნავს რომ არ მოხდეს არანაირი jQuery კოდის შესრულება გვერდის სრულ ჩატვირთამდე, ანუ
+    მანამ სანამ გვერდი არ იქნება მზად (ready). გვერდის სრული ჩატვირთვა კი ნიშნავს იმას რომ შეიქმნება DOM
+    ხე, ჩაითვირთება ყველა გარე რესურსი (სკრიპტი, სტილი და ა.შ). გვერდის სრულ  ჩატვირთვაზე დალოდება
+    გვაზღვევს რიგი შეცდომებისაგან, მოვიყვანოთ მაგალითები სადაც შესაძლებელია არ შესრულდეს კონკრეტული
+    ოპერაცია თუ გვერდი სრულად არ იქნება ჩატვირთული :
+    <ul>
+        <li>მცდელობა იმისა, რომ დავმალოთ ელემენტი, რომელიც ჯერ არ შექმნილა.</li>
+        <li>მცდელობა იმისა, რომ გავიგოთ სურათის ზომები, რომელიც ჯერ არ ჩატვირთულა.</li>
+    </ul>
+    jQuery-ს შემქმნელებმა გააკეთეს Document Ready მოვლენის აღწერის უფრო შემოკლებული ვარიანტიც :
+            <code>
+                $(function(){ <br><br>
+
+                 &nbsp;&nbsp;  // jQuery მეთოდები მოთავსდება აქ...<br><br>
+
+                });
+            </code>
+    მაგრამ კოდის წაკითხვა უფრო ადვილია როდესაც გამოყენებულია Document Ready მოვლენის აღწეის
+    პირველი  მეთოდი.
+
+</dd>
+
+<dt>3. სელექთორები</dt>
+<dd class='answer'>
+
+    იმისათვის, რომ რომელიმე HTML ელემენტზე ჩავატაროთ ესა თუ ის ოპერაცია, ჯერ უნდა აირჩეს ეს ელემენტი.
+    <strong>სელექთორი არის გამოსახულება, რომლის დახმარებითაც ხორციელდება ელემენტის ძებნა.</strong>
+    სელექთორში შეიძლება გამოყენებულ იქნას ელემენტის id, css კლასი, სახელი, ტიპი, ატრიბუტი, ატრიბუტის
+    მნიშვნელობა და ა.შ. ყველა სელექთორისათვის აუცილებელი ძირითადი სინტაქსი არის <strong>$().</strong>
+
+    <h2><strong>ძირითადი სელექთორები</strong></h2>
+
+    <ul>
+        <li><strong>*</strong> - ყველა ელემენტი</li>
+        <li><strong>tagName</strong> - ელემენტები მითითებული html ტეგის მიხედვით</li>
+        <li><strong>.className</strong> - ელემენტები რომელთა კლასია "className"</li>
+        <li><strong>#idName</strong> - ელემენტები რომელთა id არის "idName"</li>
+    </ul>
+    სელექთორების გადაცემა ხდება სტრიქონული სახით და ამიტომ სელექთორი უნდა მოთავსდეს ბრჭყალებში.
+
+    <h2><strong>ელემენტის სახელი სელექთორში</strong></h2>
+
+    ელემენტის სახელით მიხედვით ძებნისას სელექთორს ეთითება ამ ელემენტის ტეგის სახელი, მაგალითად თუ
+    გვინდა ავარჩიოთ ყველა პარაგრაფი, სელექთორს ექნება ასეთი სახე - <strong>$("p")</strong>
+            <code>
+                $(document).ready(function(){ <br>
+                &nbsp;&nbsp;&nbsp; $("button").click(function(){<br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("p").hide();<br>
+                &nbsp;&nbsp;&nbsp; });<br>
+                });
+            </code>
+
+    <h2><strong>#id სელექთორი</strong></h2>
+
+    jQuery #id სელექთორი საჭირო ელემენტის მოსაძებნად იყენებს HTML ელემენტის id ატრიბუტს. როგრც
+    წესი, სასურველია, რომ დოკუმენტში ერთ id-ს შეესაბამებოდეს მხოლოდ ერთი ელემენტი, ამიტომ ეს
+    სელექთორი გამოიყენება მაშინ, როდესაც გვინდა ერთი, უნიკალური ელემენტის პოვნა.<br>
+    id-ის მიხედვით ელემენტის საპოვნელად, სელრქთორში უნდა აიკრიფოს "#" სიმბოლო და შემდეგ id.
+    ანუ სელექთორს ექნება ასეთი სახე :<strong>$("#test")</strong>
+            <code>
+                $(document).ready(function(){ <br>
+                &nbsp;&nbsp;&nbsp; $("button").click(function(){<br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $("#test").hide();<br>
+                &nbsp;&nbsp;&nbsp; });<br>
+                });
+            </code>
+
+    <h2><strong>.class სელექთორი</strong></h2>
+
+    jQuery .class სელექთორი საჭირო ელემენტის მოსაძებნად იყენებს HTML ელემენტის class ატრიბუტს.
+    კლასის მიხედვით ელემენტის საპოვნელად, სელრქთორში უნდა აიკრიფოს წერტილი - "." სიმბოლო და
+    შემდეგ კლასი. ანუ სელექთორს ექნება ასეთი სახე :<strong>$(".test")</strong>
+            <code>
+                $(document).ready(function(){ <br>
+                &nbsp;&nbsp;&nbsp; $("button").click(function(){<br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $(".test").hide();<br>
+                &nbsp;&nbsp;&nbsp; });<br>
+                });
+            </code>
+
+
+    <h2><strong>ატრიბუტ-სელექთორები</strong></h2>
+    <ul>
+        <li>
+            <strong>[name]</strong> - ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, მაგალითად
+            <code>$("[class]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name=value]</strong> - ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა არის value. მაგალითად
+            <code>$("[class=courses]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name=!value]</strong> - ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა არ უდრის value-ს. მაგალითად
+            <code>$("[class!=courses]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name^=value]</strong> -ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა იწყება value სიტყვით. მაგალითად თუ ელემენტის კლასი არის courses
+            მაშინ ეს ელემენტი მოყვება შემდეგ ფილტრში
+            <code>$("[class^=cou]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name$=value]</strong> -ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა მთავრდება value სიტყვით. მაგალითად თუ ელემენტის კლასი არის
+            courses  მაშინ ეს ელემენტი მოყვება შემდეგ ფილტრში
+            <code>$("[class$=ses]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name*=value]</strong> -ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა შეიცავს value სიტყვას. მაგალითად თუ ელემენტის კლასი არის
+            courses  მაშინ ეს ელემენტი მოყვება შემდეგ ფილტრში
+            <code>$("[class*=urs]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name~=value]</strong> - ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ამ ატრიბუტის მნიშვნელობა შეიცავს value სიტყვას როგორც ცალკე სიტყვას. მაგალითად თუ ელემენტის
+            კლასი არის learn courses  მაშინ ეს ელემენტი მოყვება შემდეგ ფილტრში
+            <code>$("[class~=courses]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[name|=value]</strong> - ელემენტები რომლებსაც აქვთ ატრიბუტი სახელად name, და
+            ეს ატრიბუტი  შეიცავს პრეფიქსად value სიტყვას. მაგალითად თუ ელემენტის  კლასი არის
+            pref-courses  მაშინ ეს ელემენტი მოყვება შემდეგ ფილტრში
+            <code>$("[class|=pref]").css({"border":"2px solid red"});</code>
+        </li>
+        <li>
+            <strong>[first][second]...</strong> - ასეთი სელექთორი საშუალებას გვაძლევს ელემენტი
+            მოვძებნოთ ზემოთ ჩამოთვლილი ვარიანტების კომბინაციით. მაგალითად მოვძებნოთ ელემენტი,
+            რომელსაც აქვს ატრიბუტი alt, რომლის კლასიც არის coursess და რომლის id შეიცავს პრეფიქსს
+            pref
+            <code>$("[alt][class=coursess][id|=pref]").css({"border":"2px solid red"});</code>
+        </li>
+    </ul>
+
+</dd>
+
+<dt>4. ფილტრები</dt>
+<dd class='answer'>
+
+ზემოთ განხილული სელექთორების მაგალითებიდან ჩანს, რომ ხშირ შემთხვევაში სელექთორები აბრუნებენ
+ელემენტთა სიმრავლეს, მაგალითად $('li')  სელექთორი აბრუნებს დოკუმენტში არსებულ ყველა li
+ელემენტს, მაგრამ არც თუ იშვიათად საჭიროა რომ მივმართოთ რომელიმე კონკრეტულს ამ სიმრავლიდან,
+მაგალითად პირველს ან ბოლოს და ა.შ. ამისათვის jQuery-ში გამოიყენება ფილტრები.
+
+<h2>მარტივი ფილტრები</h2>
+
+<ul>
+    <li>
+        <strong>$(":first")</strong> - პირველი ნაპოვნი ელემენტი, მაგალითად
+                    <code>
+                        $("li:first").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":last")</strong> - ბოლო ნაპოვნი ელემენტი, მაგალითად
+                    <code>
+                        $("li:last").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":not(selector)")</strong> - ყველა ელემენტი გარდა მითითებულისა, მაგალითად
+        გვაქვს ორი სია ol და ul, რომლებსაც აქვთ ერთიდაიგივე კლასი my-list, და გვინდა მხოლოდ
+        ul-ის ამორჩევა
+                    <code>
+                        $(".my-list:not(ol)").css({"border":"2px solid red"});
+                    </code>
+        ახლა ამოვარჩიოთ სიის ყველა ჩანაწერი გარდა პირველისა
+                    <code>
+                        $("ol li:not(li:first)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":even")</strong> - ამორჩეული ელემენტების სიმრავლეში  ყველა ლუწ პოზიციაზე
+        მდგომი ელემენტი, მაგალითად
+                    <code>
+                        $("li:even").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":odd")</strong> - ამორჩეული ელემენტების სიმრავლეში  ყველა კენტ პოზიციაზე
+        მდგომი ელემენტი, მაგალითად
+                    <code>
+                        $("li:odd").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":gt()")</strong> - ამორჩეული ელემენტების სიმრავლეში, პარამეტრად მითითებულ
+        როცხვზე მეტი ინდექსის მქონე ელემენტები.
+                    <code>
+                        $("li:gt(2)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":lt()")</strong> - ამორჩეული ელემენტების სიმრავლეში, პარამეტრად მითითებულ
+        რიცხვზე  ნაკლები ინდექსის მქონე ელემენტები.
+                    <code>
+                        $("li:lt(6)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":eq()")</strong> - ამორჩეული ელემენტების სიმრავლეში, პარამეტრად მითითებულ
+        როცხვის ტოლი ინდექსის მქონე ელემენტები. მაგალითად ელემენტი რომლის  ინდექია 2 ანუ  მესამე
+        ელემენტი
+                    <code>
+                        $("li:eq(2)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>$(":header")</strong> -  ყველა სათაური ელემენტი - h1, h2... მაგალითად თუ
+        კლასი heading  აქვს სათაურსაც და ჩვეულებრივ პარაგრაფსაც და გვინდა მხოლოს სათაურის ამორჩევა
+                    <code>
+                        $(".heading:header").css({"border":"2px solid red"});
+                    </code>
+    </li>
+</ul>
+
+სელექთორში შესაძლებელია გამოვიყენოთ რამოდენიმე ფილტრი ერთად, მაგალითად
+            <code>
+                $(".heading:not().odd").css({"border":"2px solid red"});
+            </code>
+
+<h2>შიგთავსის მიხედვით გაფილტვრა</h2>
+
+<ul>
+    <li>
+        <strong>:contains(text)</strong> - ელემენტები, რომელთა შიგთავსიც მოიცავს text-ს.
+        მაგალითად ავარჩიოთ h2 ელემენტი, რომელიც შეიცავს სიტყვას Sauces
+                    <code>
+                        $("h2:contains(Sauces)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:empty</strong> - ელემენტები შიგთავსის გარეშე (არ შეიცავენ არც სხვა ელემენტებს და
+        არც ტექსტს)
+                    <code>
+                        $("h2:empty").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:has(selector)</strong> - ელემენტები, რომლებიც შეიცავენ თუნდაც ერთ ისეთ
+        ელემენტს რომელიც აკმაყოფილებს selector-ს, მაგალითად ავარჩიოთ ყველა პარაგრაფი, რომლებშიც
+        მოთავსებულია ერთი სურათი მაინც
+                    <code>
+                        $("p:has(img)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:parent</strong> - არაცარიელი ელემენტები, parent ნიშნავს მშობელს, და თუ
+        ელემენტი მშობელია ესეიგი ის ცარიელი არ არის, მაგალითად ეს ჩანაწერი დააბრუნებს მხოლოდ
+        არაცარიელ აბზაცებს
+                    <code>
+                        $("p:parent").css({"border":"2px solid red"});
+                    </code>
+    </li>
+</ul>
+
+<h2>შვილობილი ელემენტების გაფილტვრა</h2>
+
+<ul>
+    <li>
+        <strong>:first-child</strong> - მშობელ ელემენტში პირველ პოზიციაზე მდებარე შვილობილი
+        ელემენტი.  მაგალითად ul სიის პირველი შვილობილი li ჩანაწერი.
+                    <code>
+                        $("li:first-child").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:first-child</strong> - მშობელ ელემენტში ბოლო პოზიციაზე მდებარე  შვილობილი
+        ელემენტი. მაგალითად ul სიის პირველი შვილობილი li ჩანაწერი.
+                    <code>
+                        $("li:last-child").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:nth-child()</strong> - მშობელ ელემენტში პარამეტრად მითითებულ პოზიციაზე მდებარე
+        შვილობილი ელემენტები (ლუწ პოზიციაზე - even, კენტ პოზიციაზე - odd, ან რომელიმე კონკრეტულ
+        პოზიციაზე, <strong>ამ შემთხვევებში  გადანომრვა ხდება არა 0-დან, როგორც ეს მასივში და ა.შ ხდება,
+        არამედ 1-დან </strong>). მაგალითად ul სიის ლუწ პოზიციებზე მდგომი  შვილობილი li ჩანაწერები
+                    <code>
+                        $("li:nth-child(even)").css({"border":"2px solid red"});
+                    </code>
+        ul სიის კენტ პოზიციებზე მდგომი  შვილობილი li ჩანაწერები
+                    <code>
+                        $("li:nth-child(odd)").css({"border":"2px solid red"});
+                    </code>
+        ul სიის მესამე პოზიციებზე მდგომი  შვილობილი li ჩანაწერები
+                    <code>
+                        $("li:nth-child(3)").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:only-child</strong> - ელემენტები რომლებიც წარმოადგენენ თავისი მშობლის ერთადერთ
+        შვილობილს, მაგალითად თუ ul ელემენტში არის მხოლოდ და მხოლოდ ერთი li შვილობილი ელემენტი
+        სა სხვა არაფერი
+                    <code>
+                        $("li:only-child").css({"border":"2px solid red"});
+                    </code>
+    </li>
+</ul>
+
+<h2>ფორმის ელემენტების გაფილტვრა</h2>
+
+<ul>
+    <li>
+        <strong>:button</strong> - ელემენტები ტეგით ან ტიპით button.
+                    <code>
+                        $("input:button").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:radio</strong> - input type="radio" ელემენტები რომლებიც წარმოადგენენ გადამრთველებს
+                    <code>
+                        $("input:radio").css({"display":"none"});
+                    </code>
+    </li>
+    <li>
+        <strong>:checkbox</strong> - input type="checkbox" ელემენტები
+                    <code>
+                        $("input:checkbox").css({"display":"none"});
+                    </code>
+    </li>
+    <li>
+        <strong>:text</strong> - ტექსტური ველები ანუ input type="text"
+                    <code>
+                        $("input:text").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:password</strong> - ველები რომლებიც გამოიყენება პაროლის შესაყვანად ანუ
+        input type="password"
+                    <code>
+                        $("input:password").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:file</strong> - ელემენტები რომლებიც გამოიყენება ფაილის ასატვირთად ანუ
+        input type="file"
+                    <code>
+                        $("input:file").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:submit</strong> - ფორმის გასაგზავნი ელემენტები ანუ input type="submit"
+                    <code>
+                        $("input:submit").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:reset</strong> - ელემენტები რომლებიც გამოიყენება ფორმის გასასუფთავებლად ანუ
+        ანუ input type="reset"
+                    <code>
+                        $("input:reset").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:image</strong> - image ტიპის ელემენტები რომლებიც გამოიყენება ფორმის გასაგზავნად ანუ
+        ანუ input type="image"
+                    <code>
+                        $("input:image").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:input</strong> - ფორმის input, textarea და button ელემენტების ერთობლიობა.
+                    <code>
+                        $(".form :input").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>:selected</strong> - ეს ფილტრი გამოიყენება html select ელემენტთან მუშაობისას,
+        და აფიქსირებს select-ში არჩეულ option-ს
+                    <code>
+                        &lt;select name="sel" onchange="my()"> <br>
+                         &nbsp; &nbsp;&nbsp;  &lt;option value="one">1&lt;/option> <br>
+                         &nbsp;&nbsp;&nbsp;   &lt;option value="two">2&lt;/option><br>
+                         &nbsp;&nbsp;&nbsp;   &lt;option value="three">3 &lt;/option><br>
+                        &lt;/select><br><br>
+                        &lt;script><br>
+                        function my() {<br>
+                         &nbsp;&nbsp;&nbsp;   alert($(".form :selected").val());<br>
+                        }<br>
+                        &lt;/script><br>
+                    </code>
+    </li>
+    <li>
+        <strong>:checked</strong> - ეს ფილტრი გამოიყენება checkbox ან radio ტიპის ელემენტთან
+        მუშაობისას,  და აფიქსირებს  არჩეულ ელემენტს
+                    <code>
+                        &lt;input type="checkbox" name="check" value="1" onchange="my()"><br>
+                        &lt;script><br>
+                        function my() {<br>
+                         &nbsp;&nbsp;&nbsp;   alert($(".form :checked").val()); // 1<br>
+                        }<br>
+                        &lt;/script><br>
+                    </code>
+    </li>
+    <li>
+        <strong>:enabled</strong> - ფორმის აქტიური ელემენტები.
+                    <code>
+                        $(".form :enabled").css({"border":"2px solid red"});<br>
+                    </code>
+    </li>
+    <li>
+        <strong>:disabled</strong> - ფორმის არააქტიური ელემენტები.
+                    <code>
+                        &lt;input type="text" name="text" disabled="true"><br>
+                        <br>
+                        &lt;script><br>
+                         &nbsp;&nbsp;&nbsp;$(".form :disabled").css({"border":"2px solid red"});<br>
+                        &lt;/script><br>
+                    </code>
+    </li>
+</ul>
+
+<h2>გაფილტვრა რამდენიმე სელექთორის ერთდროულად გამოყენებით</h2>
+
+<ul>
+    <li>
+        <strong>first, second ...</strong> - გაფილტვრა პირველი , მეორე და ა.შ სელექთორის
+        მიხედვით, მაგალითად გავფილტროთ span, p და a ელემენტები ერთად
+                    <code>
+                        $("p, span, a").css({"border":"2px solid red"});
+                    </code>
+        უნდა აღინიშნოს, რომ ასეთ შემთხვევაში მძიმეების გამოყენება აუცილებელია, წინააღმდეგ შემთხვევაში
+        გაიფილტრებოდა p ელემენტში მოთავსებულ span ელემენტში მოთავსებული a ელემენტი.
+    </li>
+    <li>
+        <strong>parent > child</strong> - მშობელი ელემენტის parent-ის <strong>პირდაპირი</strong>
+        შვილობილი ელემენტი child. ანუ  &lt;p>&lt;a>&lt;/a>&lt;/p>  და არა  მაგალითად
+        &lt;p>&lt;span>&lt;a>&lt;/a>&lt;/span>&lt;/p>
+                    <code>
+                        $("p > a").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>prev + next</strong> - თუ გვაქცს, რომელიმე ელემენტი prev და გვინდა მის შემდეგ
+        <strong>პირველივე</strong> მეზობელი ელემენტის პოვნა უნდა მივუთითოთ სიმბოლო-გასაღები "+"
+        და შემდეგ თავად მეზობელი. მაგალითად my_ul სიის შემდეგ პირველი მეზობელი აბზაცის გაფილტვრა
+        მოხდება ასე
+                    <code>
+                        $("#my_ul + p").css({"border":"2px solid red"});
+                    </code>
+    </li>
+    <li>
+        <strong>prev ~ next</strong> - თუ გვაქცს, რომელიმე ელემენტი prev და გვინდა მისი შემდეგი
+        <strong>ყველა</strong> მეზობელი ელემენტის პოვნა უნდა მივუთითოთ სიმბოლო-გასაღები "+"
+        და შემდეგ თავად მეზობლები. მაგალითად my_ul სიის შემდეგი ყველა მეზობელი აბზაცის გაფილტვრა
+        მოხდება ასე
+                    <code>
+                        $("#my_ul ~ p").css({"border":"2px solid red"});
+                    </code>
+    </li>
+</ul>
+
+</dd>
+
+<dt>5. ატრიბუტებთან მუშაობა</dt>
+<dd class='answer'>
+
+    <ul>
+        <li>
+            <strong>.attr()</strong> - ამ მეთოდის საშუალებით შეგვიძლია დავაბრუნოთ ან შევცვალოთ ელემენტის
+            ესა თუ ის ატრიბუტი. ატრიბუტის დასაბრუნებლად საკმარისია attr მეთოდს მიეთითოს ერთი პარამეტრი-
+            იმ ატრიბუტის დასახელება, რომლის დაბრუნებაც გვსურს. მაგალითად დავაბრუნოთ ბმულის href
+            ატრიბუტი
+                    <code>
+                        alert($(".a").attr("href"));
+                    </code>
+            ატრიბუტის შესაცვლელად  attr მეთოდსუნდა  მიეთითოს ორი პარამეტრი: იმ ატრიბუტის დასახელება,
+            რომლის შეცვლაც გვსურს და მეორე ის მნიშვნელობა, რომელიც გვინდა რომ მიიღოს ამ ატრიბუტმა.
+            მაგალითად შევცვალოთ ბმულის href ატრიბუტი
+                    <code>
+                        alert($(".a").attr("href","http://facebook.com"));
+                    </code>
+            ატრიბუტის დაბრუნება/შეცვლას ახასიათებს ერთი თავისებურება, დავუშვათ გვაქვს რამოდენიმე ელემენტი
+            ერთი და იგივე ატრიბუტით, მაგალითად რამოდენიმე სურათი, ბუნებრივია ყველა მათგანს აქვს
+            ატრიბუტი src. <strong>თუ ვახდენთ ატრიბუტის წაკითხვას მაშინ ბრუნდება მხოლოდ პირველი
+            ელემენტის ატრიბუტი, ხოლო თუ ვახდენთ შეცვლას მაშინ იცვლება ყველა ელემენტის ატრიბუტი.
+        </strong><br>
+            პარამეტრის გადაცემა შესაძლებელია ობიექტის ლიტერალების გამოყენებითაც, მაგალითად დოკუმენტის
+            ყველა სურათს შევუსცალოთ სიგანე და წყარო
+                    <code>
+                        $("img").attr({ <br>
+                        &nbsp;&nbsp;&nbsp;   "src":"images/teriyaki.jpg",<br>
+                        &nbsp;&nbsp;&nbsp;   "width":"20px"<br>
+                        });
+                    </code>
+            არსებობს პარამეტრის გადაცემის კიდევ ერთი გზა - ესაა ფუნქციის გამოყენებით პარამეტრის მითითება
+                    <code>
+                        $("a").attr("href",function () {<br>
+                        &nbsp;&nbsp;&nbsp;  return "http://facebook.com";<br>
+                        });
+                    </code>
+            <strong>ფუნქციას შეიძლება გადაეცეს ორი პარამეტრი, რეომელთაგანაც პირველი იქნება ელემენტის
+                ინდექსი ამორჩეულ ელემენტთა სიმრავლეში, ხოლო მეორე იქნება იმ ატრიბუტის მიმდინარე მნიშვნელობა
+                რომელთანაც ვმუშაობთ. მაგალითად ყოველი ლუწ ინდექსიანი ბმული დავაკავშიროთ google-სთან, ხოლო
+                ხოლო თუ ის უკვე დაკავშირებულია google-სთან, მაშინ დავაკავშიროთ facebook-თან</strong>
+                    <code>
+                        $("a").attr("href",function (e_index,e_attr) {<br>
+                        &nbsp;&nbsp;&nbsp;    if(e_index % 2 === 0  && e_attr === "http://google.com"){<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        return "http://facebook.com";<br>
+                        &nbsp;&nbsp;&nbsp;    }<br>
+                        });
+                    </code>
+        </li>
+        <li>
+            <strong>.removeAttr()</strong> - ატრიბუტის წაშლა. მაგალითად ბმულს წავუშალოთ title
+            ატრიბუტი
+                    <code>
+                        $(".a").removeAttr("href"));
+                    </code>
+        </li>
+        <li>
+            <strong>.addClass()</strong> - კლასის დამატება ელემენტზე.
+
+                    <code>
+                        $(".a").addClass("current");
+                    </code>
+            თუ რომელიმე ელემენტს უკვე აქვს კლასი და მასთან მიმართებაში გამოვიყენებთ addClass მეთოდს,
+            ელემენტის ძველი კლასი არ შეიცვლება, უბრალოდ ახალი კლასი დაემატება ძველს class "old new".
+            ამ მეთოდის გამოყენებისას შესაძლებელია ახალი კლასის მნიშვნელობა გადავცეთ ფუნქციის საშუალებითაც:
+                    <code>
+                        $("a").addClass(function (){ <br>
+                        &nbsp;&nbsp;&nbsp;   return "new";<br>
+                        });
+                    </code>
+
+        </li>
+        <li>
+            <strong>.removeClass()</strong> - კლასის წაშლა ელემენტზე.
+                    <code>
+                        $(".a").removeClass("current");
+                    </code>
+            თუ removeClass() მეთოდს არ გადაეცემა პარამეტრი მაშინ წაეშლება ყველა კლასი რაც გააჩნია.
+            addClass() მეთოდის მსგავსად removeClass() მეთოდსაც შეიძლება გადაეცეს პარამეტრი ფუნქციის
+            საშუალებით
+                    <code>
+                        $("a").removeClass(function (){ <br>
+                        &nbsp;&nbsp;&nbsp;   return "new";<br>
+                        });
+                    </code>
+
+        </li>
+        <li>
+            <strong>.toggleClass()</strong> - ცვლის კლასის ხელმისაწვდომობას არსებული სიტუაციის
+            საწინააღმდეგოდ, ანუ თუ აქვს კლასი შლის ამ კლასს, თუ არ აქვს - ამატებს. ქვემოთ მოყვანილ
+            მაგალითში h1 ელემენტზე პირველი დაჭერისას ყველა a ელემენტს დაემატება კლასი current, შემდეგ
+            დაჭრაზე წაეშლება და ა.შ
+                    <code>
+                        &lt;h1 onclick="my()">toggle class&lt;/h1> <br>
+                        function my() {<br>
+                        &nbsp;&nbsp;&nbsp;   $("a").toggleClass("current");<br>
+                        }
+                    </code>
+        </li>
+        <li>
+            <strong>.hasClass(cName)</strong> - ამოწმებს აქვს თუ არა კლასი cName ამორჩეული ელემენტებიდან
+            ერთს მაინც და აბრუნებს მნიშვნელობებს true ან false.
+                    <code>
+                        &lt;h1 onclick="my()">toggle class&lt;/h1> <br>
+                        function my() {<br>
+                        &nbsp;&nbsp;&nbsp;  alert($("h1").hasClass("current")); // false;<br>
+                        }
+                    </code>
+        </li>
+        <li>
+            <strong>.val()</strong> - აბრუნებს ან ცვლის ატრიბუტ value-ს მნიშვნელობას, მაგალითად
+                    <code>
+                        &lt;input type="text" name="text" class="text" onchange="my()"> <br>
+                        function my(){<br>
+                        &nbsp;&nbsp;&nbsp;    alert($(".text").val());<br>
+                        }
+                    </code>
+            ახლა შევცვალოთ ატრიბუტის მნიშვნელობა
+                    <code>
+                        &lt;input type="text" name="text" class="text" onchange="my()"> <br>
+                        function my(){<br>
+                        &nbsp;&nbsp;&nbsp;    $(".text").val("new vale");<br>
+                        }
+                    </code>
+            val() მეთოდს პარამეტრი შეიძლება გადაეცეს ფუნქციის საშუალებითაც :
+                    <code>
+                        &lt;input type="text" name="text" class="text" onchange="my()"> <br>
+                        function my(){ <br>
+                         &nbsp;&nbsp;&nbsp;   $(".text").val(function () {<br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      return "new valueeeeeee";<br>
+                         &nbsp;&nbsp;&nbsp;   });<br>
+                        }
+
+                    </code>
+        <li>
+            <strong>prop()</strong> - ნებისმიერი html ელემენტი განიხილება როგორც ობიექტი, შესაბამისად
+            მათ აქვთ თავისი თვისებები. prop() მეთოდი აბრუნებს ან ცვლის ელემენტის თვისებებს. attr()
+            მეთოდის მსგავსად, prop()-ის გამოყენებისასაც <strong>თუ ვახდენთ თვისების წაკითხვას მაშინ
+            ბრუნდება ამორჩეული ელემენტებიდან მხოლოდ პირველი ელემენტის თვისება, ხოლო თუ ვახდენთ
+            შეცვლას მაშინ იცვლება ყველა ელემენტის თვისება.</strong>
+                    <code>
+                        alert($("h1").prop("tagName")); // H1
+                    </code>
+
+        </li>
+
+    </ul>
+</dd>
+
+<dt>6. jQuery და CSS</dt>
+<dd class='answer'>
+
+    <ul>
+        <li>
+            <strong>.css()</strong> - აბრუნებს ან ცვლის ელემენტის css პარამეტრებს. ეს მეთოდი შეიძლება
+            გამოვიყენოთ რამდენიმენაირად, მაგალითად თუ მხოლოდ ერთ პარამეტრს მივუთითებთ, მაშინ
+            დაბრუნდება მითითებული პარამეტრის შესაბამისი css პარამეტრის მნიშვნელობა, მაგალითად გავიგოთ
+            div ელემენტის სიგანე
+                    <code>
+                        alert($("div#for-ex").css("width"));
+                    </code>
+            თუ ისეთი css პარამეტრის მნიშვნელობის გაგება გვინდა, რომელიც რამოდენიმე სიტყვისგან შედგება,
+            მაგალითად margin-top, რეკომენდებულია ვიხმაროთ ე.წ camelCase  ანუ marginTop
+                    <code>
+                        alert($("div#for-ex").css("marginTop"));
+                    </code>
+            თუ css პარამეტრის შეცვლა გვინდა და არა წაკითხვა მაშინ css() მეთოდს უნდა მივუთითოთ ორი
+            პარამეტრი: პირველი css პარამეტრის დასახელება მეორე კი ის მნიშვნელობა რომელიც გვინდა რომ
+            ამ css პარამეტრმა მიიღის
+                    <code>
+                        $("div#for-ex").css("marginTop","20px");
+                    </code>
+            იმ შემთხვევაში თუ გინდა შევცვალოთ რამოდენიმე css პარამეტრი ერთად, css() მეთოდს პარამეტრები
+            შეიძლება გადაეცეს ობიექტის ლიტერალების საშუალებით:
+                    <code>
+                        $("div#for-ex").css({<br>
+                        &nbsp;&nbsp;&nbsp;    "marginTop":"100px",<br>
+                        &nbsp;&nbsp;&nbsp;    "border":" 5px solid blue"<br>
+                        });
+                    </code>
+            აგრეთვე შესაძლებელია პარამეტრების ფუნქციის საშუალებით გადაცემაც
+                    <code>
+                        $("div#for-ex").css("width",function () {
+                        &nbsp;&nbsp;&nbsp;   return "500px";
+                        });
+                    </code>
+            <strong>ამ მეთოდსაც ახასიათებს ის თვისება, რომ css პარამეტრის წაკითხვისას ბრუნდება
+                ამორჩეული ელემენტებიდან მხოლოდ პირველის შესაბამისი css პარამეტრი, ხოლო css პარამეტრის
+                შეცვლისას იცვლებნა ყველა ამორჩეული ელემენტის შესაბამისი css პარამეტრი.</strong>
+        </li>
+    </ul>
+
+
+    <h2><strong>height ანუ სიმაღლე</strong></h2> - სიმაღლის განხილვა  შეიძლება გაიყოს სამ ნაწილად:<br>
+    <h3><strong>.height()</strong></h3>
+    ეს მეთოდი თვლის სიმაღლეს padding, margin და border ანუ გარე და შიდა დაშორებების და ჩარჩოს
+    მნიშვნელობების გამოკლებით
+            <code>
+                alert($("div#for-ex").height());
+            </code>
+    <h3><strong>.innerHeight()</strong></h3>
+    ეს მეთოდი თვლის სიმაღლეს padding ანუ შიდა დაშორებების ჩათვლით, თუ ელემენტის სიმაღლე არის
+    50px და ვთქვათ padding-top არის 20px მაშინ innerHeight იქნება 70px
+            <code>
+                alert($("div#for-ex").innerHeight()); // 70
+            </code>
+    <h3><strong>.outerHeight()</strong></h3>
+    ეს მეთოდი თვლის სიმაღლეს padding ანუ შიდა დაშორებებისა და margin ანუ გარე დაშორებების
+    ჩათვლით, თუ ელემენტის სიმაღლე არის 50px და ვთქვათ padding-top არის 20px და margin-top
+    არის 10px მაშინ outerHeight იქნება 80px
+            <code>
+                alert($("div#for-ex").outerHeight()); // 80
+            </code>
+    თუ outerHeight() მეთოდს პარამეტრად მივუთიტებთ true-ს მაშინ სიმაღლეს დაემატება ჩარჩოს სისქეც
+    და თუ იგივე შემთხვევაში რაც ზემოთ ვნახეთ ჩარჩოს სისქე იქნება 5px მაშინ outerHeight გამოვა90px
+            <code>
+                alert($("div#for-ex").outerHeight()); // 90
+            </code>
+    <br>
+    height მეთოდის გამოყენებით შესაძლებელია სიმაღლის არა მარტო წაკითხვა არამედ შეცვლაც თუ მას
+    გადავცემთ პარამეტრად სასურველ სიდიდეს, ვთქვათ გვინდა რომ div ელემენტის სიმაღლე გახდეს
+    400px
+            <code>
+                $("div#for-ex").height(400));
+            </code>
+    პარამეტრის გადაცემა შესაძლებელია ფუნქციის საშუალებითაც
+            <code>
+                $("div#for-ex").height(function () {  <br>
+                &nbsp;&nbsp;&nbsp;    return "700"; <br>
+                });
+            </code>
+    <strong>ამ მეთოდსაც ახასიათებს ის თვისება, რომ სიმაღლის წაკითხვისას ბრუნდება ამორჩეული
+        ელემენტებიდან მხოლოდ პირველის სიმაღლე, ხოლო სიმაღლის შეცვლისას იცვლებნა ყველა ამორჩეული
+        ელემენტის სიმაღლე.</strong>
+
+
+    <label>ზუსტად ანალოგიოურად მუშაობს ელემენტის სიგანის საპოვნელი/შესაცვლელი მეთოდი width(), ამიტომ
+        მას აღარ გავიხილავთ.</label>
+
+</dd>
+
+<dt>7. jQuery და CSS, scroll</dt>
+<dd class='answer'>
+
+    <ul>
+        <li>
+            <strong>.offset() და .position()  </strong> - ამ მეთოდების გამოყენებით შესაძლებელია
+            დავაბრუნოთ ან შევცვალოთ ელემენტის პოზიცია. ეს მეთოდები აბრუნებენ ელემენტის კოორდინატებს.
+
+            <h2><strong>.offset()</strong></h2>
+
+            .offset() მეთოდის გამოყენებით შეგვიძლია გავიგოთ ან შევცვალოთ ელემენტის კოორდინატები
+            დოკუმენტთან  მიმართებაში. მეთოდი აბრუნებს ობიექტს, რომელსაც აქვს სულ ორი თვისება top და
+            left ანუ  დოკუმენტის ზედა კიდიდან დაშორება და დოკუმენტის მარცხენა კიდიდან დაშორება
+                    <code>
+                        alert($("img").offset().top); <br>
+                        alert($("img").offset().left);
+                    </code>
+            ეს კოდი დააბრუნებს დოკუმენტში <strong>პირველი შემხვედრი</strong> სურათის კოორდინატებს.
+            რაც შეეხება offset()-ის საშუალებით კოორდინატებიშ შეცვლას - ამისათვის მეთოდს უნდა გადავცეთ
+            ორი პარამეტრი, ობიექტის ლიტერალის საშუალებით
+                    <code>
+                        $("h1").offset({top:100,left:300});
+                    </code>
+
+            <h2><strong>.position()</strong></h2>
+
+            .position() მეთოდის გამოყენებით შეგვიძლია <strong> მხოლოდ გავიგოთ </strong>ელემენტის
+            კოორდინატები ისეთ უახლოეს მშობელ ელემენტთან მიმართებაში, რომელსაც მითითებული აქვს css
+            პარამეტრი position (relative, absolute ან fixed). მეთოდი აბრუნებს ობიექტს, რომელსაც აქვს
+            სულ ორი თვისება top და left ანუ  მშობელი ელემენტის ზედა კიდიდან დაშორება და მშობელი
+            ელემენტის მარცხენა კიდიდან დაშორება
+                    <code>
+                        alert($("img").position().top); <br>
+                        alert($("img").position().left);
+                    </code>
+            ეს კოდი დააბრუნებს დოკუმენტში<strong>პირველი შემხვედრი</strong> სურათის კოორდინატებს.
+
+        </li>
+        <li>
+            <strong>scrollTop() და scrollLeft()</strong> -  ეს მეთოდები აბრუნებენ ან ცვლიან ელემენტის იმ
+            ნაწილის სიგანეს/სიმაღლეს, რომელიც დაიმალება სიგანეში/სიმაღლეში სქროლისას (თუ ოდესმე ამას ვინმე
+            წაიკითხავთ სიამოვნებით მივიღებ ქართული სიტვებით გადმოცემულ უკეთეს ახსნას ;) )<br><br>
+            <img src="images/scroll.png" style="max-width: 500px;display: block; margin:0px auto;"> <br>
+            <br>
+            <img src="images/scroll.jpg" style="max-width: 500px;display: block; margin:0px auto;"> <br>
+
+            scrollTop() და scrollLeft() მეთოდების საშუალებით მარცხენა და ზედა სქროლის სიდიდეების დაბრუნება
+            შეიძლება შემდეგნაირად
+                    <code>
+                        alert($("div").scrollTop());<br>
+                        alert($("div").scrollLeft());
+                    </code>
+
+        </li>
+    </ul>
+
+</dd>
+
+<dt>8. jQuery და HTML</dt>
+<dd class='answer'>
+
+    <h1>ნაწილი პირველი</h1>
+
+    jQuery-სთან მუშაობისას ხშირად საჭიროა რომელიმე ელემენტში ჩავამატოთ ახალი ელელემენტი, ან ახალი html
+    კოდი, ან ახალი ტექსტი და ა.შ. ამ თავში განვიხილავთ კონტენტის დამატების საშუალებებს.
+    <ul>
+
+        <li>
+            <strong>.html()</strong> - ეს მეთოდი აბრუნებს ან ცვლის არჩეული ელემენტის html შიგთავსს.
+            შიგთავსის დაბრუნების მაგალითი ასეთია
+                   <code>
+                       document.write($("#header").html());
+                   </code>
+            ახლა შევცვალოთ იგივე ელემენტის html შგთავსი
+                   <code>
+                       $("header").html("&lt;p>header&lt;/p>");
+                   </code>
+            როგორც ვხედავთ შიგთავსის შეცვლისას html() მეთოდს პარამეტრად გადაეცა ჩვეულებრივი html სინქასი,
+            მაგრამ აგრეთვე შესაძლებელია გადავცეთ jQuery სელექთორებით არჩეული პარამეტრიც, მაგალითად ელემენტში
+            ჩავსვათ დოკუმენტში არსებული ყველა სურათი
+                   <code>
+                       $("header").html($("img"));
+                   </code>
+            html() მეთოდს პარამეტრი შეიძლება გადაეცეს ფუნქციის სახითაც
+                   <code>
+                       $("header").html(function () { <br>
+                        &nbsp;&nbsp;&nbsp;   return "&lt;i>ghjghjghj&lt;/i>";<br>
+                       });
+                   </code>
+            <strong>ფუნქციას შეიძლება ფადაეცეს ორი პარამეტრი რომელთაგან პირველი აღნიშნავს არჩეული ელემენტის
+                ინდექსს  ხოლო მეორე html შიგთავსის მიმდინარე მნიშვნელობას. ამ მეთოდსაც ახასიათებს ის თვისება,
+                რომ html შიგთავსის  წაკითხვისას ბრუნდება ამორჩეული ელემენტებიდან მხოლოდ პირველის შესაბამისი
+                შიგთავსის, ხოლო html შიგთავსის შეცვლისას იცვლება ყველა ამორჩეული ელემენტის შესაბამისი html
+                შიგთავსი.</strong>
+        </li>
+        <li>
+            <strong>.text()</strong> - ეს მეთოდი აბრუნებს ან ცვლის არჩეული ელემენტის ტექსტურ შიგთავსს.
+            შიგთავსის დაბრუნების მაგალითი ასეთია
+                   <code>
+                        alert($("header").text());
+                   </code>
+            ახლა შევცვალოთ იგივე ელემენტის ტექსტური შგთავსი
+                   <code>
+                       $("header").text("new text");
+                   </code>
+            text() მეთოდს პარამეტრი შეიძლება გადაეცეს ფუნქციის სახითაც
+                   <code>
+                      $("header").text()(function () { <br>
+                       &nbsp;&nbsp;&nbsp;   return "new text";<br>
+                      });
+                   </code>
+            თუ text() მეთოდს პარამეტრად გადავცემთ html ტეგების შემცველ ტექსტს ეს ტეგები აღიქმება ჩვეულებრივ
+            ტექსტად და არა როგორც html ტეგებად
+                   <code>
+                       $("header").text("&lt;i>new text&lt;/i>"); // შედეგი იქნება &lt;i>new text&lt;/i>  და არა <i>new text</i>
+                   </code>
+            <strong>ფუნქციას შეიძლება ფადაეცეს ორი პარამეტრი რომელთაგან პირველი აღნიშნავს არჩეული ელემენტის
+                ინდექსს  ხოლო მეორე ტექსტური შიგთავსის მიმდინარე მნიშვნელობას. ამ მეთოდსაც ახასიათებს ის თვისება,
+                რომ ტექსტური შიგთავსის  წაკითხვისას ბრუნდება ამორჩეული ელემენტებიდან მხოლოდ პირველის შესაბამისი
+                შიგთავსის, ხოლო ტექსტური შიგთავსის შეცვლისას იცვლება ყველა ამორჩეული ელემენტის შესაბამისი ტექსტური
+                შიგთავსი.</strong>
+        </li>
+        <li>
+            <strong>.wrap() და .wrapAll()</strong> - ამ მეთოდების საშუალებით შესაძებელია ამორჩეული
+            ელემენტის ახალ html ელემენტებში მოქცევა (wrap ინგლისურად ნიშნავს გახვევას შეფუთვას), ანუ
+            ამორჩეული ელემენტი მოექცევა პარამეტრად მითითებულ html სინტაქსში, მაგალითად გვაქვს პარაგრაფი p
+            რომლის კლასიცაა new  და გვინდა   რომ დოკუმენტში არსებული ყველა სურათი მოექცეს ამ პარაგრაფში
+                    <code>
+                        $("img").wrap("&lt;p class='new'>&lt;/p>");
+                    </code>
+            ეს ჩანაწერი ყველა სურათისათვის ცალ-ცალკე შექმნის &lt;p class="new">&lt;/p> აბზაცს და მოათავსებს
+            თითო სურათს თითო მათგანში<br><br>
+            <img src="images/wrap.jpg" style="max-width: 800px;display: block; margin:0px auto;">
+            <br><br>
+            wrapAll() მეთოდი კი შექმნის ერთ &lt;p class="new">&lt;/p> აბზაცს და ყველა სურათს ერთად მოათავსებს
+            მასში<br><br>
+            <img src="images/wrapall.jpg" style="max-width: 800px;display: block; margin:0px auto;">
+            <br><br>
+            ფუნქციის საშუალებით პარამეტრის გადაცემა შესაძლებელია <strong>მხოლოდ wrap() მეთოდისათვის </strong>
+                    <code>
+                        $("img").wrap(function () { <br>
+                        &nbsp;&nbsp;&nbsp;   return "&lt;p class='new'>&lt;/p>";<br>
+                        });
+                    </code>
+        </li>
+        <li>
+            <strong>.wrapInner()</strong> - ამ მეთოდის საშუალებით შესაძებელია ამორჩეული  ელემენტის
+            <strong>შიგთავსის</strong> ახალ  html ელემენტებში მოქცევა, ანუ ამორჩეული ელემენტის შიგთავსი
+            მოექცევა პარამეტრად მითითებულ html სინტაქსში. მაგალითად div ელემენტის შიგთავსი მოვაქციოთ
+            strong ტეგში
+                    <code>
+                        $("header").wrapInner(function () {<br>
+                         &nbsp;&nbsp;&nbsp;   return "<strong></strong>";<br>
+                        });
+                    </code>
+            <br><br>
+            <img src="images/wrapinner.jpg" style="max-width: 800px;display: block; margin:0px auto;">
+            <br><br>
+        </li>
+        <li>
+            <strong>.unwrap()</strong> - ეს მეთოდი შლის ამორჩეული კვანძის მშობელ ელემენტს, მაგალითად
+            h2 ელემენტში მოქცეულ strong ელემენტს მოვუშალოთ h2
+                    <code>
+                        $("strong").unwrap();
+                    </code>
+        </li>
+    </ul>
+
+    <h1>ნაწილი მეორე</h1>
+
+    <ul>
+        <li>
+            <strong>.append() და .appendTo()</strong>  <br>
+            append() მეთოდი ამატებს პარამეტრად მითითებულ კონტენტს ამორჩეული ელემენტის ბოლოში, ანუ
+            ამორჩეული ელემენტის ბოლო შვილობილი ელემენტის შემდეგ. ვთქვათ გვაქვს ul სია და გვინდა დავამატოთ
+            ახალი  ჩანაწერი.
+                    <code>
+                        $("ul").append("&lt;li>new li&lt;/li>");
+                    </code>
+            იგივე შეიძლება გაკეთდეს შემდეგნაირადაც
+                    <code>
+                        $("ul").append(function () { <br>
+                        &nbsp;&nbsp;&nbsp;  return "&lt;li>ghjghj&lt;/li>";<br>
+                        });
+                    </code>
+            რაც შეეხება appendTo() მეთოდს - მისი გამოყენებისას ჯერ უნდა შევქმნათ ის რისი დამატებაც გვსურს
+            და შემდეგ უნდა მივუთითოთ ადგილი სადაც ვამატებთ შექმნილ ელემენტს, ანუ ჯერ ხდება ახალი
+            შვილობილის განსაზღვრა ხოლო შემდეგ უკვე თავად მშობლის
+                    <code>
+                        $("&lt;li>new li&lt;/li>").appendTo($("ul"));
+                    </code>
+
+        </li>
+        <li>
+            <strong>.prepend() და .prependTo()</strong> - .append() და .appendTo() მეთოდების ანალოგიური
+            მეთოდები, უბრალოდ ეს მეთოდები ახალ შვილობილ ელემენტს ამატებენ არა მშობელი ელემენტის ბოლოში,
+            არამედ თავში.
+        </li>
+        <li>
+            <strong>.after() და .insertAfter()</strong><br>
+            .after() მეთოდი ამატებს მითითებულ შიგთავსს ამორჩეული ელემენტის შემდეგ, ანუ ამორჩეული მეთოდის
+            შემდეგ იქმნება, იერარქიულად მისი თანამოძმე, ახალი ელემენტი
+                    <code>
+                        $("h1").after("&lt;span>span after h1&lt;/span>");
+                    </code>
+            რაც შეეხება insertAfter() მეთოდს - მისი გამოყენებისას ჯერ უნდა შევქმნათ ის რისი დამატებაც გვსურს
+            და შემდეგ უნდა მივუთითოთ ელემენტი რომლის შემდეგაც ვამატებთ შექმნილ ელემენტს, ანუ ჯერ ხდება ახალი
+            ელემენტის განსაზღვრა ხოლო შემდეგ უკვე იმ ელემენტისა რომლის შემდეგაც ვამატებთ
+                    <code>
+                        $("&lt;span>span after h1&lt;/span>").insertAfter($("h1"));
+                    </code>
+        </li>
+        <li>
+            <strong>.bedore() და .insertBefore()</strong> - .after() და .insertAfter() მეთოდების ანალოგიური
+            მეთოდები, უბრალოდ ეს მეთოდები ახალ  ელემენტს ამატებენ არა ამორჩეული ელემენტის შემდეგ, არამედ
+            ამორჩეული ელემენტის წინ.
+        </li>
+    </ul>
+</dd>
+
+<dt>9. ელემენტების წაშლა</dt>
+<dd class='answer'>
+
+    <ul>
+        <li>
+            <strong>.remove() და .detach()</strong> - ეს მეთოდები DOM-დან შლიან პარამეტრად მითითებულ
+            ელემენტებს.
+                    <code>
+                        $("h1").remove();
+                    </code>
+            ანალოგიურად მუშაობს .detach() მეთოდიც
+                    <code>
+                        $("h1").detach();
+                    </code>
+            განსხვავება მათ შორის კი არის შემდეგი : <strong>ორივე მეთოდით წაშლილი ელემენტების აღდგენა შეიძლება
+            მაგრამ, თუ ელემენტს წავშლით remove() მეთოდით და შემდეგ აღვადგენთ მას, მასთან დაკავშირებული
+            მოვლენათა დამმუშავებლები აღარ იმუშავებენ, detach() მეთოდი კი ინახავს ელემენტთან მიმაგრებულ
+            მოვლენებს</strong>. მაგალითად გვაქვს h1 ელემენტი, რომელზეც  მიმაგრებულია მოვლენა click
+                    <code>
+                        $("h1").click(function(){ <br>
+                            alert("test");<br>
+                        });<br><br>
+
+                        var v = $("h1").detach(); // წავშალეთ ელემენტი  <br>
+                        v.appendTo("#test-div");  // აღვადგინეთ ელემენტი და მოვათავსეთ #test-div ელემენტში
+                    </code>
+            ამის შემდეგ alert ფუნქცია მაინც იმუშავებს, ხოლო თუ იგივეს ვიზამდით remove() მეთოდის გამოყენებით,
+            ალერტი აღარ იმუშავებდა. <br><br>
+            remove() და detach() მეთოდებს შეიძლება გადაეცეთ პარამეტრები რომლებშიც დაზუსტებული იქნება თუ
+            რომელი ელემენტის წაშლა გვინდა
+                    <code>
+                        $("img").remove(":first");
+                    </code>
+        </li>
+        <li>
+            <strong>.empty()</strong> - ეს მეთოდი შლის, აცარიელებს ელემენტის შიგთავსს, ანუ თავად ელემენტი
+            კი რჩება DOM-ში მაგრამ ცარიელდება მისი შიგთავსი
+                    <code>
+                        $("h1").empty();
+                    </code>
+        </li>
+    </ul>
+</dd>
+
+<dt>10. მოვლენები</dt>
+<dd class='answer'>
+
+<h1>მოვლენების დამუშავების სინტაქსი</h1>
+
+მოვლენების დამუშავების სინტაქსი განვიხილოთ click მოვლენის მაგალითზე. განვსაზღვროთ ეს მოვლენა
+დოკუმენტის ყველა პარაგრაფისათვის : $("p").click(); შემდეგი ეტაპი არის იმის განსაზღვრა თუ რა უნდა
+მოხდეს, როდესაც მოვლენა დაფიქსირდება, ანუ მოვლენას უნდა მივამაგროთ შესაბამისი ფუნქცია:
+            <code>
+                $("p").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;   // ქმედება აღიწერება აქ !!<br>
+                });<br>
+            </code>
+
+<h1>მაუსის მოვლენები</h1>
+
+<h2>click</h2>
+click() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ, როდესაც
+მომხმარებელი დააწვება ამ ელემენტს
+            <code>
+                $("p").click(function(){<br>
+                &nbsp;&nbsp;&nbsp; $(this).hide();<br>
+                });
+            </code>
+
+
+<h2>dblclick</h2>
+dblclick() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ,
+როდესაც მომხმარებელი მოახდენს ორმაგ დაწკაპუნებას ამ ელემენტზე
+            <code>
+                $("p").dblclick(function(){<br>
+                &nbsp;&nbsp;&nbsp; $(this).hide();<br>
+                });
+            </code>
+
+<h2>mouseenter()</h2>
+mouseenter() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ,
+როდესაც მაუსის ისარი აღმოჩნდება  ელემენტის თავზე
+            <code>
+                $("p").mouseenter(function(){<br>
+                &nbsp;&nbsp;&nbsp; alert("You entered on element !");<br>
+                });
+            </code>
+
+<h2>mouseleave()</h2>
+mouseleave() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ,
+როდესაც მაუსის ისარი ტოვებს ელემენტს
+            <code>
+                $("p").mouseleave(function(){<br>
+                &nbsp;&nbsp;&nbsp; alert("Bye! You now leave element !");<br>
+                });
+            </code>
+
+<h2>mousedown()</h2>
+mousedown() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ,
+როდესაც მაუსის კურსორი არის ელემენტის თავზე და მომხმარებელი დააწვება მაუსის რომელიმე ღილაკს (მარცხენა, შუა,
+მარჯვენა)
+            <code>
+                $("p").mousedown(function(){<br>
+                &nbsp;&nbsp;&nbsp; alert("mousedown !");<br>
+                });
+            </code>
+
+<h2>mouseup()</h2>
+mouseup() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ელემენტზე, ფუნქცია კი სრულდება მაშინ,
+როდესაც მომხმარებელი აუშვებს ელემენტზე დაჭერილ მაუსის რომელიმე ღილაკს
+            <code>
+                $("p").mouseup(function(){<br>
+                &nbsp;&nbsp;&nbsp; alert("mouseup !");<br>
+                });
+            </code>
+
+<h2>hover()</h2>
+hover() მეთოდი მოიცავს ორ ფუნქციას და ის არის mouseenter() და mouseleave() მეთოდების კომბინაცია.
+პირველი ფუნქცია სრულდება მაშინ, როდესაც მაუსი მივა HTML ელემენტთან, მეორე კი სრულდება მაშინ, როდესაც
+მაუსი დატოვებს ელემენტს
+            <code>
+                $("#p1").hover(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    alert("You entered p1!");<br>
+                },<br>
+                function(){<br>
+                &nbsp;&nbsp;&nbsp;    alert("Bye! You now leave p1!");<br>
+                });
+            </code>
+
+
+
+
+
+<h2>on მეთოდი</h2>
+
+on() მეთოდის საშუალებით შეგვიძლია html ელემენტს მივამაგროთ, როგორც ერთი, ასევე რამდენიმე მოვლენის
+დამმუშავებელი ერთად, ერთის მიმაგრება ხდება ასე
+            <code>
+                $("p").on("click", function(){<br>
+                &nbsp;&nbsp;&nbsp;   $(this).hide();<br>
+                });
+            </code>
+რამდენიმეს მიმაგრება კი ასე
+            <code>
+                $("p").on({<br>
+                &nbsp;&nbsp;&nbsp;    mouseenter: function(){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        $(this).css("background-color", "lightgray");<br>
+                &nbsp;&nbsp;&nbsp;    }, <br>
+                &nbsp;&nbsp;&nbsp;    mouseleave: function(){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        $(this).css("background-color", "lightblue");<br>
+                &nbsp;&nbsp;&nbsp;    }, <br>
+                &nbsp;&nbsp;&nbsp;    click: function(){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        $(this).css("background-color", "yellow");<br>
+                &nbsp;&nbsp;&nbsp;    } <br>
+                });
+            </code>
+
+<h1>კლავიატურის მოვლენები</h1>
+
+<h2>keydown()</h2>
+keydown მოვლენა  ფიქსირდება როდესაც კლავიატურაზე რომელიმე კლავიში იმყოფება დაჭერილ მდგომარეობაში.
+            <code>
+                $("input").keydown(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    $("input").css("background-color", "yellow");<br>
+                });
+            </code>
+
+<h2>keypress()</h2>
+keypress() მოვლენა  ფიქსირდება როდესაც კლავიატურაზე რომელიმე კლავიში იმყოფება დაჭერილ მდგომარეობაში.
+            <code>
+                $("input").keypress(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    $("input").css("background-color", "yellow");<br>
+                });
+            </code>
+
+<h2>keyup()</h2>
+keyup() მოვლენა  ფიქსირდება როდესაც დაჭერილ კლავიშს აუშვებენ ხელს.
+            <code>
+                $("input").keyup(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    $("input").css("background-color", "yellow");<br>
+                });
+            </code>
+
+კლავიშზე დაჭერისას მოვლენათა თანმიმდევრობა ასეთია
+<ol>
+    <li>keydown</li>
+    <li>keypress</li>
+    <li>keyup</li>
+</ol>
+
+<h1>ფორმის მოვლენები</h1>
+
+
+<h2>focus()</h2>
+focus() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ფორმის ტექსურ ველებს, ფუნქცია კი სრულდება
+მაშინ, როდესაც ელემენტი ღებულობს ფოკუსს
+            <code>
+                $("input").focus(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $(this).css("background-color", "#cccccc");<br>
+                });
+            </code>
+
+<h2>focusin() და focusout()</h2>
+focusin მოვლენა ფიქსირდება მაშინ, როდესაც ელემენტი (ან ამ ელემენტის რომელიმე შვილობილი ელემენტი)
+ღებულობს ფოკუსს. focusout მოვლენა კი ფიქსირდება მაშინ, როდესაც ელემენტი (ან ამ ელემენტის რომელიმე
+შვილობილი ელემენტი) კარგავს ფოკუსს.
+            <code>
+                $("div").focusin(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $(this).css("background-color", "#FFFFCC");<br>
+                });<br>
+                $("div").focusout(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $(this).css("background-color", "#FFFFFF");<br>
+                });
+            </code>
+
+<h2>blur()</h2>
+blur() მეთოდი ამაგრებს მოვლენის დამმუშავებელ ფუნქციას HTML ფორმის ტექსურ ველებს, ფუნქცია კი სრულდება
+მაშინ, როდესაც  ელემენტი კარგავს ფოკუსს
+            <code>
+                $("input").blur(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $(this).css("background-color", "#cccccc");<br>
+                });
+            </code>
+
+<h2>change()</h2>
+change მოვლენა ფიქსირდება მაშინ როდესაც იცვლება ელემეტის შიგთავსი (მხოლოდ &lt;input>, &lt;textarea> და
+&lt;select> ელემენტების). &lt;select> ელემენტის შემთხვევაში მოვლენა ფიქსირდება შეცვლისთანავე ხოლო &lt;input>
+და &lt;textarea>- ს შემთხვევაში ფიქსირდება მაშინ, როდესაც მათი შიგთავსის შეცვლის შემდეგ ეს ელემენტები
+დაკარგავენ ფოკუსს.
+            <code>
+                $("input").change(function(){<br>
+                 &nbsp;&nbsp;&nbsp;   alert("The text has been changed.");<br>
+                });<br>
+            </code>
+
+<h2>select()</h2>
+select() მოვლენა ფიქსირდება მაშინ, როდესაც &lt;textarea> ან ტექსტურ &lt;input>-ში მოინიშნება ტექსტი
+            <code>
+                $("input").select(function(){<br>
+                &nbsp;&nbsp;&nbsp;    alert("Text marked!");<br>
+                });
+            </code>
+
+<h2>submit()</h2>
+submit მოვლენა ფიქსირდება მაშინ, როდესაც ფორმა იგზავნება
+            <code>
+                $("form").submit(function(){<br>
+                &nbsp;&nbsp;&nbsp;    alert("Submitted");<br>
+                });
+            </code>
+
+
+<h1>ბრაუზერის მოვლენები</h1>
+
+<h2>resize()</h2>
+resize მოვლენა ფიქსირდება მაშინ, როდესაც ბრაუზერის ფანჯარა იცვლის ზომას. ამ მოვლენის დამმუშავებელში
+აღწერილი ფუნქცია სრულდება მაშინ, როდესაც იცვლება ბრაუზერის ფანჯრის ზომები. ეს სკრიპტი დაითვლის თუ
+რამდენჯერ შეიცვალა ზომები
+            <code>
+                $(window).resize(function(){ <br>
+                &nbsp; &nbsp;&nbsp;   $('span').text(x += 1);<br>
+                });
+            </code>
+
+<h2>scroll()</h2>
+scroll მოვლენა ფიქსირდება მაშინ როდესაც მომხმარებელი დასქროლავს ამორჩეულ ელემენტში. ეს მოვლენა მუშაობს
+ყველა ისეთ ელემენტთან, რომელთა დასქროლვაც შესაძლებელია, აგრეთვე ობიექტ window-თან.
+            <code>
+                $("div").scroll(function(){<br>
+                &nbsp; &nbsp;&nbsp;    $("span").text(x += 1);<br>
+                });
+            </code>
+
+
+
+
+
+
+<h1>მოვლენა როგორც ობიექტი</h1>
+
+თუ მოვლენას განვიხილავთ, როგორც ობიექტს, მაშინ ბუნებრივია მას ექნება კონკრეტული თვისებები. ამ პარაგრაფში
+განვიხილავთ მოვლენის, როგორც ობიექტის, ძირითად თვისებებს
+
+<h2>event.pageX და event.pageY</h2>
+event.pageX თვისება აბრუნებს კურსორის კოორდინატს, დოკუმენტის მარცხენა საზღვართან მიმართებაში, ხოლო
+event.pageY თვისება აბრუნებს კურსორის კოორდინატს, დოკუმენტის ზედა საზღვართან მიმართებაში.
+            <code>
+                 $(document).mousemove(function(event){ <br>
+                 &nbsp;&nbsp;&nbsp;   $("span").text("X: " + event.pageX + ", Y: " + event.pageY); <br>
+                 });
+            </code>
+
+<h2>event.preventDefault()</h2>
+event.preventDefault() მეთოდი აჩერებს, აუქმებს  მოვლენის დამმუშავებელში აღწერილ  ქმედებას. მაგალითად
+თუ გვინდა, რომ ბმულზე დაჭრისას არ გადავიდეთ მითითებულ URL-ზე
+            <code>
+                $("a").click(function(event){<br>
+                &nbsp;&nbsp;&nbsp;   event.preventDefault();<br>
+                });
+            </code>
+
+<h2>event.target()</h2>
+event.target მეთოდი აბრუნებს თუ რომელ DOM ელემენტზეა მიმაგრებული მოვლენა.
+            <code>
+                $("p, button, h1, h2").click(function(event){<br>
+                &nbsp;&nbsp;&nbsp;   $("div").html("Triggered by a " + event.target.nodeName + " element.");<br>
+                });
+            </code>
+
+<h2>event.type</h2>
+event.type თვისება აბრუნებს თუ, რა ტიპის მოვლენა, რომელი მოვლენა დაფიქსირდა
+            <code>
+                $("p").on("click dblclick mouseover mouseout", function(event){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").html("Event: " + event.type);<br>
+                });
+            </code>
+
+<h2>event.which</h2>
+event.which თვისება აბრუნებს კლავიატურის ან მაუსის რომელ ღილაკზე დაჭერამ  გამოიწვია მოვლენის დაფიქსირება.
+            <code>
+                $("input").keydown(function(event){
+                    $("div").html("Key: " + event.which);
+                });
+            </code>
+
+</dd>
+
+<dt>11. ეფექტები</dt>
+<dd class='answer'>
+
+<h2>.hide()</h2>
+hide() მეთოდი შინაარსით იგივეა რაც css თვისება display:none და მალავს ამორჩეულ ელემენტს. ამ მეთოდის
+საშუალებით დამალული ელემენტების გამოსაჩენად გამოიყენება მეთოდი show().
+            <code>
+                $("button").click(function(){  <br>
+                &nbsp;&nbsp;&nbsp;    $("p").hide();<br>
+                });
+            </code>
+
+<h2>.show()</h2>
+show() მეთოდი აჩენს jQuery-ს მეთოდებით და CSS display:none თვისებით დამალულ ელემენტებს.
+<strong>css visibility:hidden - ამთვისებით დამალულ ელემენტებს show() მეთოდი ვერ გამოაჩენს</strong>
+            <code>
+                $("button").click(function(){  <br>
+                &nbsp;&nbsp;&nbsp;    $("p").show();<br>
+                });
+            </code>
+
+<h2>.toggle()</h2>
+toggle() მეთოდი არის hide() და show() მეთოდების გადამრთველი. ეს მეთოდი ამოწმებს ამორჩეული ელემენტის
+ხილვადობას და ასრულებს show()-ს თუ ელემენტი დამალულია  და ასრულებს hide()-ს  თუ ელემენტი არ არის
+დამალული.
+            <code>
+                $("button").click(function(){  <br>
+                &nbsp;&nbsp;&nbsp;    $("p").toggle();<br>
+                });
+            </code>
+
+<h2>.animate()</h2>
+animate() მეთოდი ასრულებს ანიმაციას  CSS თვისებების გამოყენებით. იმისათვის რათა შეიქმნას ანიმაციის ეფექტი
+animate() მეთოდი CSS თვისებებს ცვლის დროის მცირე მონაკვეთის ინტერვალებით. <strong>შესაძლებელია
+    მხოლოდ ციფრული მნიშვნელობების ანიმაცია (მაგ: margin:30px), სტრიქონული მნიშვნელობების ანიმაცია შეუძლებელია
+    (მაგ: background-color:red) თუმცა არის გამონაკლისები  "show", "hide" და "toggle", ამ მნიშვნელობებს
+    შეუძლიათ მოახდინონ ელემენტის დამალვა/გამოჩენა ანიმაციის გამოყენებით</strong>
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("#box").animate({height: "300px"});<br>
+                });
+            </code>
+ესაა იმ css თვისებების ჩამონათვალი, რომელთა შეცვლაც შესაძლებელია ანიმაციით
+<ul>
+    <li><a target="_blank" href="#">backgroundPositionX</a></li>
+    <li><a target="_blank" href="#">backgroundPositionY</a></li>
+    <li><a target="_blank" href="#">borderWidth</a></li>
+    <li><a target="_blank" href="#">borderBottomWidth</a></li>
+    <li><a target="_blank" href="#">borderLeftWidth</a></li>
+    <li><a target="_blank" href="#">borderRightWidth</a></li>
+    <li><a target="_blank" href="#">borderTopWidth</a></li>
+    <li><a target="_blank" href="#">borderSpacing</a></li>
+    <li><a target="_blank" href="#">margin</a></li>
+    <li><a target="_blank" href="#">marginBottom</a></li>
+    <li><a target="_blank" href="#">marginLeft</a></li>
+    <li><a target="_blank" href="#">marginRight</a></li>
+    <li><a target="_blank" href="#">marginTop</a></li>
+    <li><a target="_blank" href="#">outlineWidth</a></li>
+    <li><a target="_blank" href="#">padding</a></li>
+    <li><a target="_blank" href="#">paddingBottom</a></li>
+    <li><a target="_blank" href="#">paddingLeft</a></li>
+    <li><a target="_blank" href="#">paddingRight</a></li>
+    <li><a target="_blank" href="#">paddingTop</a></li>
+    <li><a target="_blank" href="#">height</a></li>
+    <li><a target="_blank" href="#">width</a></li>
+    <li><a target="_blank" href="#">maxHeight</a></li>
+    <li><a target="_blank" href="#">maxWidth</a></li>
+    <li><a target="_blank" href="#">minHeight</a></li>
+    <li><a target="_blank" href="#">minWidth</a></li>
+    <li><a target="_blank" href="#">fontSize</a></li>
+    <li><a target="_blank" href="#">bottom</a></li>
+    <li><a target="_blank" href="#">left</a></li>
+    <li><a target="_blank" href="#">right</a></li>
+    <li><a target="_blank" href="#">top</a></li>
+    <li><a target="_blank" href="#">letterSpacing</a></li>
+    <li><a target="_blank" href="#">wordSpacing</a></li>
+    <li><a target="_blank" href="#">lineHeight</a></li>
+    <li><a target="_blank" href="#">textIndent</a></li>
+</ul>
+
+<h2>.clearQueue()</h2>
+clearQueue()მ ეთოდი შლის ყველა იმ პროცესს, რომელიც ჯერ არ დაწყებულა მაგრამ მოვლენის დამმუშავებელში
+არის აღწერილი და ქმედებათა რიგში რაღაც კონკრეტული ადგილი აქვს (Queue - რიგი, ჯერი). მაგალითად
+გვაქვს ორი ღილაკი #start და #stop, #start-ზე დაჭერისას იწყება ამორჩეული ელემენტის ზომების შეცვლის
+პროცესი, ეს პროცესი შედგება 4 ეტაპისაგან, ამ პროცესის დროს თუ დავაწვებით #stop ღილაკს, მაშინ პროცესი
+შეჩერდება.
+
+            <code>
+                $("#start").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 1500);<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 1500);<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 100}, 1500);<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 100}, 1500);<br>
+                });<br>
+                $("#stop").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").clearQueue();<br>
+                });
+            </code>
+
+<h2>.delay()</h2>
+delay() მეთოდი ნიშნავს დროის მთვლელს, რომლის მიხედვითაც ხდება  ქმედებათა რიგში შემდეგი ქმედების
+შესრულების გადადება (delay - შეყოვნება, გადადება, გადავადება).
+            <code>
+                $("button").click(function(){<br>
+                 &nbsp;&nbsp;&nbsp;   $("#div1").delay("slow").fadeIn();<br>
+                 &nbsp;&nbsp;&nbsp;   $("#div2").delay("fast").fadeIn();<br>
+                 &nbsp;&nbsp;&nbsp;   $("#div3").delay(800).fadeIn();<br>
+                 &nbsp;&nbsp;&nbsp;   $("#div4").delay(2000).fadeIn();<br>
+                 &nbsp;&nbsp;&nbsp;   $("#div5").delay(4000).fadeIn();<br>
+                 });
+            </code>
+
+<h2>.finish()</h2>
+finish() მეთოდი აჩერებს მიმდინარე ანიმაციებს, შლის რიგში მდგომ ყველა ანიმაციას და პირდაპირ აბრუნებს იმ
+შედეგს რაც ბოლო ანიმაციის შესრულების შემდეგ უნდა მიღებულიყო.
+            <code>
+                $("#start").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
+                });<br>
+                $("#complete").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").finish();<br>
+                });
+            </code>
+
+<h2>.stop()</h2>
+stop() ეთოდი  აჩერებს მიმდინარე ანიმაციას და პროცესი გრძელდება შემდეგი ანიმაციიდან.
+            <code>
+                $("#start").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
+                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
+                });<br>
+                $("#stop").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").stop();<br>
+                });
+            </code>
+
+<h2>.fadeIn()</h2>
+fadeIn() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს (opacity -  გამუქება), სიმკრთალიდან ანუ
+უხილავობიდან სიმუქისაკენ ანუ ხილვადობისაკენ.
+            <code>
+                $("button").click(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    $("p").fadeIn();<br>
+                });
+            </code>
+
+<h2>.fadeOut()</h2>
+fadeOut() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს (opacity -  გამუქება), სიმუქიდან ანუ
+ხილვადობიდან სიმკრთალისკენ ანუ  უხილავობისკენ .
+            <code>
+                $("button").click(function(){ <br>
+                &nbsp;&nbsp;&nbsp;    $("p").fadeOut();<br>
+                });
+            </code>
+
+<h2>.fadeTo()</h2>
+fadeTo() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს  სიმუქის განსაზღვრულ კოეფიციენტამდე
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("p").fadeTo(1000, 0.4);<br>
+                });
+            </code>
+
+<h2>.fadeToggle()</h2>
+fadeToggle() მეთოდი არის fadeIn() and fadeOut() მეთოდების გადამრთველი. თუ ელემენტი არის მკრთალი
+fadeToggle() მეთოდი გაამუქებს მას, ხოლო თუ ელემენტი არის მუქი - გაამკრთალებს.
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("#div1").fadeToggle();<br>
+                });
+            </code>
+
+<h2>.slideDown()</h2>
+slideDown() მეთოდი ჩამოშლის (გამოაჩენს) ამორჩეულ ელემენტს. ეს მეთოდი მუშაობს jQuery-ს მეთოდებით
+და css display:none მეთოდით დამალულ ელემენტებთან.(არ მუშაობს css visibility:hidden მეთოდთან).
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("p").slideDown();<br>
+                });
+            </code>
+
+<h2>.slideUp()</h2>
+slideUp() მეთოდი კეცავს (დამალავს) ამორჩეულ ელემენტს.
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("p").slideUp();<br>
+                });
+            </code>
+
+
+<h1>jQuery Callback ფუნქციები</h1>
+
+ჯავასკრიპტის ინსტრუქციები სრულდება ნაბიჯ-ნაბიჯ, ხაზების მიხედვით, ეფექტებთან მუშაობისას  რიგ შემთხვევებში
+ამან შეიძლება გამოიწვიოს შეცდომა, იმდენად რამდენადაც, შემდეგი ხაზის შესრულება შეიძლება დაიწყოს მაშინ
+როდესაც რომელიმე ეფექტი ჯერ არ იყოს დასრულებული. ამის თავიდან ასაცილებლად გამოიყენება Callback ფუნქციები
+(Callback -  დაბრუნება, კომპიუტერულ მეცნიერებაში – კოდი, რომელიც გადაიცემა როგორც სხვა კოდის პარამეტრი).
+callback ფუნქცია შესრულდება მას შემდეგ რაც ეფექტი დასრულდება. ტიპიური სინტაქსი ასეთია <strong>
+    $(selector).hide(speed,callback);</strong>
+            <code>
+                $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("p").hide("slow", function(){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    alert("The paragraph is now hidden");<br>
+                &nbsp;&nbsp;&nbsp;    });<br>
+                });
+            </code>
+
+<h1>jQuery ჯაჭვური მეთოდები</h1>
+
+jQuery-ში შესაძლებელია ერთმანეთს მიებას ქმედებები/მეთოდები. ეს გადაბმები საშუალებას გვაძლევს, რომელიმე
+ელემენტთან მიმართებაში გამოვიყენოთ რამოდენიმე jQuery მეთოდი  ერთი ჩანაწერის საშუალებით. ამისათვის
+საჭიროა ესა თუ ის ქმედება უბრალოდ მივამატოთ მის წინა ქმედებას
+            <code>
+                $("#p1").css("color", "red").slideUp(2000).slideDown(2000);
+            </code>
+როდესაც ქმედებათა გადაბმის შედეგად მიღებული ჯაჭვი საკმაოდ გრძელია, შესაძლებელია ასეთი სინტაქსის გამოყენებაც
+            <code>
+                $("#p1").css("color", "red")<br>
+                &nbsp;&nbsp;&nbsp;   .slideUp(2000)<br>
+                &nbsp;&nbsp;&nbsp;  ... <br>
+                &nbsp;&nbsp;&nbsp;  .slideDown(2000);
+            </code>
+
+</dd>
+
+<dt>12. გადაადგილება, მოძრაობა DOM-ში</dt>
+<dd class='answer'>
+
+jQuery გადაადგილება ანუ მოძრაობა DOM-ში გულისხმობს HTML ელემენტთა "პოვნას" (ამორჩევას)  მონათესავე
+ელემენტების საშუალებით. თავდაპირველად ირჩევა, რომელიმე ელემენტი და შემდეგ საჭიროების მიხედვით ხდება
+გადაადგილება მანამ სანამ არ მივალთ სასურველ ელემენტამდე.  სურათზე მოცემულია DOM-ის ფრაგმენტი, იერარქიული
+ხე : <br><br>
+<img src="images/dom.png" style="max-width: 500px;display: block; margin:0px auto;"> <br><br>
+jQuery-ის საშუალებით ადვილად შესაძლებელია ამ იერარქიის რომელიმე ელემენტიდან ვიმოძრაოთ ზევით (ancestors,
+ancestor - წინაპარი), ქვევით (descendants, descendant-შთამომავალი), ან გვერდულად (siblings,
+sibling-დედმამიშვილი).<strong>სწორედ ამ მოძრაობას ეწოდება გადაადგილება ანუ მოძრაობა DOM-ში.</strong>
+მოცემული სურათი ნათესაობითობის თვალსაზრისით გაიშიფრება ასე
+<ul>
+    <li>
+        &lt;div> ელემენტი არის &lt;ul> ელემენტის <strong>მშობელი</strong>, მის შიგნით არსებული ყველა ელემენტის
+        <strong>წინაპარი.</strong>
+    </li>
+    <li>
+        &lt;ul> ელემენტი არის ორივე &lt;li> ელემენტის <strong>მშობელი</strong> და &lt;div>ელემენტის
+        <strong>შვილი.</strong>
+    </li>
+    <li>
+        მარცხვენა &lt;li> ელემენტი არის  &lt;span> ელემენტის <strong>მშობელი,</strong> და  &lt;ul>  ელემენტის
+        <strong>შვილი</strong> და &lt;div> ელემენტის <strong>შთამომავალი.</strong>
+    </li>
+    <li>
+        &lt;span> ელემენტი არის მარცხენა &lt;li> ელემენტის <strong>შვილი</strong>  და  &lt;ul> და &lt;div>
+        ელემენტების <strong>შთამომავალი.</strong>
+    </li>
+    <li>
+        &lt;li> ელემენტები ერთმანეთისთვის არიან  <strong>მოძმე</strong> ელემენტები (ჰყავთ ერთი მშობელი)
+    </li>
+    <li>
+        მარცხენა &lt;li> ელემენტი არის &lt;b> ელემენტის <strong>მშობელი</strong>,  &lt;ul> ელემენტის
+        <strong>შვილი</strong> და &lt;div> ელემენტის <strong>შთამომავალი.</strong>
+    </li>
+    <li>
+        &lt;b> ელემენტი არის  მარჯვენა &lt;li> ელემენტის <strong>შვილი,</strong>  და &lt;ul> და &lt;div>
+        ელემენტების  <strong>შთამომავალი.</strong>
+    </li>
+
+</ul>
+
+<strong>წინაპარში მოიაზრება მშობელი, მშობლის მშობელი და ა.შ, შთამომავალში - შვილი, შვილის შვილი და ა.შ,
+    მოძმეში კი მოიაზრება ერთი და იგივე მშობლის შვილი ელემენტები.</strong>
+
+<h1>DOM იერარქიში გადაადგილება ზევით, წინაპარი ელემენტების ძებნა</h1>
+
+<h2>parent() მეთოდი</h2>
+parent() მეთოდი აბრუნებს  ამორჩეული ელემენტის უშუალო მშობელ ელემენტს. ეს მეთოდი DOM-ის ხეში გადაადგილდება
+ზემოთ  <strong>მხოლოდ ერთი საფეხურით</strong>.  მოყვანილი მაგალითი დააბრუნებს ყველა &lt;span>
+ელემენტის მშობელს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("span").parent();<br>
+                });
+            </code>
+
+<h2>parents() მეთოდი</h2>
+parents() მეთოდი აბრუნებს ამორჩეული ელემენტის ყველა წინაპარ ელემენტს დოკუმენტის ძირ ელემენტამდე (&lt;html>)
+მოყვანილი მაგალითი დააბრუნებს  &lt;span> ელემენტის ყველა მშობელს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("span").parents();<br>
+                });
+            </code>
+აგრეთვე შესაძლებელია პარამეტრის მითითებით წინაპრების გაფილტვრა, ეს მაგალითი დააბრუნებს ყველა &lt;span>
+ელემენტის მშობელ &lt;ულ> ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;   $("span").parents("ul");<br>
+                });
+            </code>
+
+<h2>parentsUntil() მეთოდი</h2>
+parentsUntil() მეთოდი აბრუნებს ორ მითითებულ არგუმენტს შორის მდგარ ყველა მშობელ ელემენტს. ეს მაგალითი
+ყველა მშობელ ელემენტს რომლებიც დგანან   &lt;span> და  &lt;div> ელემენტებს შორის
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("span").parentsUntil("div");<br>
+                });
+            </code>
+
+<h2>closest() მეთოდი</h2>
+closest() მეთოდი აბრუნებს ამორჩეული ელემენტის <strong>პირველ წინაპარ </strong> ელემენტს. წინაპარი არის
+მშობელი, მშობლის მშობელი და ა.შ. ეს მეთოდი არის parents() მეთოდის მსგავსი.
+
+
+
+
+
+
+<h1>DOM იერარქიში გადაადგილება ქვევით, შვილობილი ელემენტების ძებნა</h1>
+
+<h2>children() მეთოდი</h2>
+children() მეთოდი აბრუნებს ამორჩეული ელემენტის ყველა უშუალო შვილობილ ელემენტს. ეს მეთოდი DOM-ის ხეში
+გადაადგილდება ქვემოთ<strong>მხოლოდ ერთი საფეხურით</strong>. მოყვანილი მაგალითი დააბრუნებს დოკუმენტში
+არსებული ყველა &lt;div> ელემენტის ყველა უშუალო შვილობილ ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").children();<br>
+                });
+            </code>
+აგრეთვე შესაძლებელია შვილობილი ელემენტების ძებნისას children() მეთოდს მიეთითოს პარამეტრები. მოყვანილი
+მაგალითი დააბრუნებს ყველა &lt;p> ელემენტს რომლებსაც აქვთ კლასი "first" და არიან &lt;div> ელემენტის შვილობილები
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").children("p.first");<br>
+                });
+            </code>
+
+<h2>find() მეთოდი</h2>
+find() მეთოდი აბრუნებს ამორჩეული ელემენტის ყველა უშუალო შვილობილ ელემენტს, მოყვანილი მაგალითი დააბრუნებს
+ყველა &lt;span> ელემენტს, რომლებიც არიან  &lt;div> ელემენტის შვილობილები
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").find("span");<br>
+                });
+            </code>
+ყველა შვილობილის დაბრუნება კი მოხდება ასე
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div").find("*");<br>
+                });
+            </code>
+
+<h1>DOM იერარქიში გადაადგილება მარცხნივ და მარჯვნივ, მოძმე ელემენტების ძებნა</h1>
+
+<h2>siblings() მეთოდი</h2>
+siblings() მეთოდი აბრუნებს ამორჩეული ელემენტის ყველა მოძმე ელემენტს. მოყვანილი მაგალითი დააბრუნებს &lt;h2>
+ელემენტის ყველა მოძმე ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("h2").siblings();<br>
+                });
+            </code>
+აგრეთვე შესაძლებელია მოძმე ელემენტების ძებნისას siblings() მეთოდს მიეთითოს პარამეტრები. მოყვანილი
+მაგალითი დააბრუნებს ყველა &lt;p> ელემენტს რომლებიც  არიან &lt;h2> ელემენტის მოძმეები
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("h2").siblings("p");<br>
+                });
+            </code>
+
+<h2>next() მეთოდი</h2>
+next() მეთოდი აბრუნებს ამორჩეული ელემენტის შემდეგ მოძმე ელემენტს. მოყვანილი მაგალითი დააბრუნებს &lt;h2>
+ელემენტის შემდეგ მოძმე ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("h2").next();<br>
+                });
+            </code>
+
+<h2>nextAll() მეთოდი</h2>
+nextAll() მეთოდი აბრუნებს ამორჩეული ელემენტის შემდეგ ყველა მოძმე ელემენტს. მოყვანილი მაგალითი დააბრუნებს
+&lt;h2>  ელემენტის შემდეგ მდებარე ყველა მოძმე ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("h2").nextAll();<br>
+                });
+            </code>
+
+<h2>nextUntil() მეთოდი</h2>
+nextUntil() მეთოდი აბრუნებს ამორჩეული ელემენტის შემდეგ მდებარე ისეთ მოძმე ელემენტებს, რომლებიც მოთავსებულნი
+არიან მითითებულ არგუმენტებს შორის. მოყვანილი მაგალითი დააბრუნებს უველა მოძმე ელემენტს &lt;h2> და &lt;h6>
+ელემენტებს შორის.
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("h2").nextUntil("h6");<br>
+                });
+            </code>
+
+ზუსტად ანალოგიურად მუშაობს  prev(), prevAll() და prevUntil()მეთოდები,  რომლებიც გამოიყენება ამორჩეული
+ელემენტის მოძმე  ელემენტების საპოვნელად მხოლოდ მარცხენა მიმართულებით.
+
+
+<h1>DOM იერარქიში გადაადგილება ფილტრების საშუალებით</h1>
+
+გაფილტვრის სამი ძირითადი მეთოდი არის first(), last() და eq(), რომლებიც საშუალებას გვაძლევენ ამოვარჩიოთ
+ელემენტი, ელემენტთა ჯგუფში მათი პოზიციიდან გამომდინარე. გაფილტვრის სხვა მეთოდები, როგორებიცაა  filter()
+და not() საშუალებას გვაძლევს ვიპოვოთ ელემენტები, რომლებიც ემთხვევა ან არ ემთხვევა  მითითებულ კრიტერიუმებს.
+
+<h2>first() მეთოდი</h2>
+first() მეთოდი აბრუნებს ამორჩეული ელემენტებიდან პირველ მათგანს. მოყვანილი მაგალითი ამოარჩევს <strong>
+    პირველ</strong> &lt;div>  ელემენტში მდებარე  <strong>პირველ</strong> &lt;p> ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div p").first();<br>
+                });
+            </code>
+
+<h2>last() მეთოდი</h2>
+last() მეთოდი აბრუნებს ამორჩეული ელემენტებიდან ბოლო მათგანს. მოყვანილი მაგალითი ამოარჩევს <strong>ბოლო
+</strong>&lt;div>  ელემენტში მდებარე  <strong>ბოლო</strong> &lt;p> ელემენტს
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("div p").last();<br>
+                });
+            </code>
+
+<h2>eq() მეთოდი</h2>
+eq() მეთოდი დააბრუნებს მითითებული ინდექსის მქონე ელემენტს ამორჩეული ელემენტებიდან. ინდექსაცია იწყება 0-დან,
+ასე რომ პირველ ელემენტს ექნება ინდექსი 0 და არა 1. მოყვანილი მაგალითი ამოარჩევს მეორე &lt;p> ელემენტს (ინსექსი 1)
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("p").eq(1);<br>
+                });
+            </code>
+
+<h2>filter() მეთოდი</h2>
+filter() მეთოდი საშუალებას გვაძლევს მივუთითოტ კრიტერიუმი, ელემენტები რომლებიც ვერ დააკმაყოფილებენ
+მითითებულ კრიტერიუმს წაიშლება ამორჩეული ელემენტებიდან, დაბრუნებით კი დაბრუნდება ის ელემენტები რომლებიც
+დააკმაყოფილებენ კრიტერიუმს. მოყვანილი მაგალითი დააბრუნებს ყველა &lt;p> ელემენტს, რომელთა კლასი არის "intro"
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("p").filter(".intro");<br>
+                });
+            </code>
+
+<h2>not() მეთოდი</h2>
+not() მეთოდი აბრუნებს ყველა იმ ელემენტს, რომლებიც არ აკმაყოფილებენ მითითებულ კრიტერიუმს. ეს მეთოდი არის
+filter() მეთოდის საწინააღმდეგო მეთოდი. მოყვანილი მაგალითი დააბრუნებს ყველა &lt;p> ელემენტს, რომელთა კლასი
+არ არის "intro"
+            <code>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("p").not(".intro");<br>
+                });
+            </code>
+
+</dd>
+
+</dl>
+
+</div>
+
+
+<BR><BR>
+
+<div class="content">
+    <h2 style="margin-left: 25px;">AJAX</h2>
+</div>
+<BR><BR>
+
+<div class="content">
+<dl class="faqs">
+
+
+
+<dt>1. რა არის AJAX ?</dt>
+<dd class='answer'>
+
+    AJAX (აბრევიატურა «Asynchronous Javascript And Xml») პროგრამირების ენა არ არის, ის  არის გვერდის
+    გადატვირთვის გარეშე სერვერთან მიმართვის ტექნოლოგია, რომლის მუშაობის სქემაც დაფუძნებულია შემდეგ ორ რამეზე
+
+    <ol>
+        <li>ბრაუზერში ჩაშენებული XMLHttpRequest ობიექტი (გამოიყენება ინფორმაციის მისაღებად)</li>
+        <li>JavaScript და HTML DOM (გამოიყენება მიღებული ინფორმაციის გამოსატანად)</li>
+    </ol>
+    AJAX-ის მუშაობის სქემა ასეთია:<br><br>
+    <img src="images/ajax.gif"><br><br>
+    <ol>
+        <li>დაფიქსირდა მოვლენა ვებ-გვერდზე (ჩაიტვირთა გვერდი, დაეჭირა რომელიმე ღილაკს და ა.შ)</li>
+        <li>JavaScript-მა შექმნა XMLHttpRequest ობიექტი</li>
+        <li>XMLHttpRequest ობიექტმა გააგზავნა მოთცოვნა სერვერზე</li>
+        <li>სერვერმა მიიღო მოთხოვნა</li>
+        <li>სერვერმა დაუბრუნა გვერდს პასუხი მოთხოვნაზე</li>
+        <li>პასუხი წაიკითხა JavaScript-მა</li>
+        <li>შესაბამისი ქმედება (გვერდის განახლების მსგავსი) მოახდინა JavaScript-მა</li>
+    </ol>
+</dd>
+
+<dt>2. XMLHttpRequest ობიექტი</dt>
+<dd class='answer'>
+
+AJAX-ის ქვაკუთხედი არის XMLHttpRequest ობიექტი, იგი გამოიყენება "სცენის მიღმა" სერვერთან ინფორმაციის გასაცვლელად.
+ეს ნიშნავს იმას რომ შესაძლებელია მოხდეს გვერდის რომელიმე ნაწილის განახლება გვერდის გადატვირთვის გარეშე.
+
+<h2>XMLHttpRequest ობიექტის შექმნა</h2>
+
+XMLHttpRequest ობიექტი ჩაშენებულია ყველა თანამედროვე ბრაუზერში (Chrome, IE7+, Firefox, Safari, და Opera).
+მისი შექმნის სინტაქსი ასეთია
+            <code>
+                variable = new XMLHttpRequest();
+            </code>
+IE-ს ძველი ვერსიები (IE5 და IE6) იყენებენ ActiveX ობიექტს
+            <code>
+                variable = new ActiveXObject("Microsoft.XMLHTTP");
+            </code>
+            <code>
+                var xhttp; <br>
+                if (window.XMLHttpRequest) { // ანუ თუ ობიექტ window-ს აქვს თვისება XMLHttpRequest <br>
+                &nbsp; &nbsp;&nbsp;   xhttp = new XMLHttpRequest();<br>
+                &nbsp;&nbsp;&nbsp;    } else {<br>
+                &nbsp;&nbsp;&nbsp;    // code for IE6, IE5<br>
+                &nbsp;&nbsp;&nbsp;    xhttp = new ActiveXObject("Microsoft.XMLHTTP");<br>
+                }
+            </code>
+
+<h2>XMLHttpRequest ობიექტის მეთოდები</h2>
+
+<ul>
+    <li><strong>new XMLHttpRequest()</strong> - ახალი XMLHttpRequest ობიექტის შექმნა</li>
+    <li><strong>abort()</strong> - მიმდინარე მოთხოვნის გაუქმება</li>
+    <li><strong>getAllResponseHeaders()</strong> - აბრუნებს სათაურ ინფორმაციას</li>
+    <li><strong>getResponseHeader()</strong> - აბრუნებს განსაზღვრულ სათაურ ინფორმაციას</li>
+    <li><strong>open(method, url, async, user, psw)</strong> - მოთხოვნის განსაზღვრა</li>
+    <li><strong>send()</strong> -  მოთხოვნის გაგზავნა სერტვერზე GET მეთოდით</li>
+    <li><strong>send(string)</strong> - მოთხოვნის გაგზავნა სერტვერზე POST მეთოდით </li>
+    <li><strong>setRequestHeader()</strong> - სათაურ ინფორმაციის მნიშვნელობის მითითება</li>
+</ul>
+
+<h2>XMLHttpRequest ობიექტის თვისებები</h2>
+
+<ul>
+    <li>
+        <strong>onreadystatechange</strong> - განსაზღვრავს ფუნქციას რომელიც გამოიძახება readyState თვისების
+        შეცვლისას
+    </li>
+    <li>
+        <strong>readyState</strong> -  XMLHttpRequest - ის სტატუსი. მან შეიძლება მიღოს შემდეგი მნიშვნელობები
+        <ul>
+            <li> <strong>0</strong> - მოთხოვნა არ არის ინიციალიზებული</li>
+            <li> <strong>1</strong> - დამყარებულია კავშირი სერვერთან</li>
+            <li> <strong>2</strong> - მოთხოვნა მიღებულია</li>
+            <li> <strong>3</strong> - მოთხოვნა მუშავდება</li>
+            <li> <strong>4</strong> - მოთხოვნა დამუშავდა, შესრულდა და პასუხი მზადაა</li>
+        </ul>
+    </li>
+    <li><strong>responseText</strong> - აბრუნებს პასუხს სტრიქონული სახით</li>
+    <li><strong>responseXML</strong> - აბრუნებს პასუხს XML ფორმატში</li>
+    <li>
+        <strong>status</strong> - აბრუნებს მოთხოვნის სტატუსის ნომერს
+        <ul>
+            <li><strong>200</strong> -  "OK" (ყველაფერი კარფადაა)</li>
+            <li><strong>403</strong> - "Forbidden" (აკრძალული მოთხოვნა)</li>
+            <li><strong>404</strong> - "Not Found" (ვერ მოხერხდა პოვნა)</li>
+        </ul>
+    </li>
+    <li><strong>statusText</strong> -აბრუნებს სტატუს-ტექსტს (მაგ: "OK" ან "Not Found")</li>
+</ul>
+
+<label>როდესაც readyState არის 4 და სტატუსი არის 200, ე.ი პასუხი მზად არის.</label>
+
+
+<h2>მოთხოვნის გაგზავნა სერვერზე</h2>
+
+სერვერზე მოთხოვნის გასაგზავნად გამოიყენება XMLHttpRequest ობიექტის open() და send() მეთოდები
+            <code>
+                xhttp.open("GET", "ajax_info.txt", true);<br>
+                xhttp.send();
+            </code>
+<ul>
+    <li>
+        <strong>open(method, url, async)</strong> - განსაზღვრავს მოთხოვნის ტიპს
+        <ul>
+            <li><strong>method</strong> -  მოთხოვნის ტიპი GET ან POST</li>
+            <li><strong>url </strong> - სერვერის (ან ფაილის) მდებარეობა</li>
+            <li><strong>async </strong> - true (ასინქრონული) ან false (სინქრონული)</li>
+        </ul>
+    </li>
+    <li><strong>send()</strong> - მოთხოვნის გაგზავნა GET მეთოდით</li>
+    <li><strong>send(string)</strong> - მოთხოვნის გაგზავნა POST მეთოდით </li>
+</ul>
+
+<h2>GET თუ POST ?</h2>
+
+GET მეთოდი არის უფრო სწრაფი და მარტივი ვიდრე POST მაგრამ  POST მეთოდი უნდა გამოვიყენოთ მაშინ, როდესაც :
+<ul>
+    <li>გვინდა ფაილის ან მონაცემთა ბაზის განახლება სერვერზე</li>
+    <li>სერვერზე იგზავნება დიდი მოცულობის ინფორმაცია (POST მეთოდს არ აქვს ინფორმაციის ზომის შეზღუდვა).</li>
+    <li>სერვერზე იგზავნება მომხმარებლის მიერ შეყვანილი ინფორმახცია, POST არის უფრო საიმედო და უსაფრთხო ვიდრე GET.</li>
+</ul>
+
+<h2>GET მოთხოვნა</h2>
+
+            <code>
+                &lt;button type="button" onclick="loadDoc()">Request data&lt;/button><br><br>
+
+                &lt;p id="demo">&lt;/p><br><br>
+
+                &lt;script><br>
+                function loadDoc() {<br>
+                &nbsp;&nbsp;&nbsp;     var xhttp = new XMLHttpRequest();<br>
+                &nbsp;&nbsp;&nbsp;     xhttp.onreadystatechange = function() {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   if (this.readyState == 4 && this.status == 200) {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   document.getElementById("demo").innerHTML = this.responseText;<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;         }<br>
+                &nbsp;&nbsp;&nbsp;     };<br>
+                &nbsp;&nbsp;&nbsp;     xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true);<br>
+                &nbsp;&nbsp;&nbsp;     xhttp.send();<br>
+                }<br>
+                &lt;/script>
+
+            </code>
+
+<h2>POST მოთხოვნა</h2>
+
+            <code>
+                &lt;button type="button" onclick="loadDoc()">Request data&lt;/button><br><br>
+
+                &lt;p id="demo">&lt;/p><br><br>
+
+                &lt;script><br>
+                function loadDoc() {<br>
+                &nbsp;&nbsp;&nbsp;     var xhttp = new XMLHttpRequest();<br>
+                &nbsp;&nbsp;&nbsp;     xhttp.onreadystatechange = function() {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   if (this.readyState == 4 && this.status == 200) {<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   document.getElementById("demo").innerHTML = this.responseText;<br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;         }<br>
+                &nbsp;&nbsp;&nbsp;     };<br>
+                &nbsp;&nbsp;&nbsp; xhttp.open("POST", "demo_post2.asp", true);
+                &nbsp;&nbsp;&nbsp; xhttp.send("<label>fname=Henry&lname=Ford</label>");
+                }<br>
+                &lt;/script>
+
+            </code>
+
+<h2>url - ანუ ფაილი სერვერზე</h2>
+
+open() მეთოდის url პარამეტრი, არის სერვერზე არსებული ფაილის მისამართი:
+            <code>
+                xhttp.open("GET", "ajax_test.asp", true);
+            </code>
+ეს ფაილი შეიძლება იყოს სხვადასხვა სახის:  .txt და .xml, ან სერვერული სლრიპტინგის ფაილები .asp და .php (ეს ფაილები
+განსაზღვრავენ თუ სად უნდა დამუშავდეს მოთხოვნა სერვერზე).
+
+<h2>ასინქრონულობა - true თუ false ?</h2>
+
+ასინქრონულად მოთხოვნის გასაგზავნად, open() მეთოდის async პარამეტრი უნდა იყოს true:
+            <code>
+                xhttp.open("GET", "ajax_test.asp", true);
+            </code>
+
+<label>
+    ასინქრონულად მოთხოვნის გაგზავნას ენიჭება უდიდესი მნიშვნელობა. სერვერზე გაგზავნილი მოთხოვნების უმრავლესობის
+    დამუშავებას ხშირად ჭირდება საკმაოდ დიდი დრო.  AJAX-მდე, ამ მოთხოვნების დამუშავების პროცესში აპლიკაციია წყვეტდა
+    მუშაობას და ელოდებოდა ოპერაციის დასრულებას. ასინქრონულობის საშუალებით, JavaScript აღარ ელოდება სერვერიდან
+    პასუხის მიღებას და იგი აგრძელებს მუშაობას:
+</label>
+<ul>
+    <li>სერვერიდან პასუხის მოლოდინში სრულდება სხვა სკრიპტები</li>
+    <li>პასუხზე რეაგირება კი ხდება მაშინ როდესაც ის მზადაა</li>
+</ul>
+
+<h2>Async = true</h2>
+
+როდესაც ვიყენებთ async = true, საჭირო ფუნქციის შესრულება ხდება მაშინ როდესაც onreadystatechange მოვლენაში
+პასუხი მზად არის:
+            <code>
+                xhttp.onreadystatechange = function() {<br>
+                &nbsp;&nbsp;&nbsp;  if (this.readyState == 4 && this.status == 200) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   document.getElementById("demo").innerHTML = this.responseText;<br>
+                &nbsp;&nbsp;&nbsp;  }<br>
+                };<br>
+                xhttp.open("GET", "ajax_info.txt", true);<br>
+                xhttp.send();<br>
+            </code>
+
+<h2>Async = false</h2>
+
+            <code>
+                xhttp.open("GET", "ajax_info.txt", false);
+            </code>
+
+async = false-ს გამოყენება რეკომენდებული არ არის, თუმცა მისი მითითება შესაძლებელია მცირე მოთხოვნების შესრულებისას.
+<label>
+    JavaScript არ გააგრძელებს მოქმედებას, მანამ სანამ სერვერიდან პასუხი არ იქნება მზად და თუ სერვერი გადატვირთულია
+    ან ნელა მუშაობს, აპლიკაცია "გაჭედავს" ან საერთოდ გაჩერდება.  async = false-ს მითითებისას, onreadystatechange
+    ფუნქცია არ იწერება -  უბრალოდ კოდი უნდა მოთავსდეს send() ჩანაწერის შემდეგ:
+</label>
+
+            <code>
+                xhttp.open("GET", "ajax_info.txt", false);<br>
+                xhttp.send();<br>
+                document.getElementById("demo").innerHTML = xhttp.responseText;<br>
+            </code>
+
+
+</dd>
+
+
+
+</dl>
+</div>
+
+
+
+<BR><BR>
+
+
+
+
+<BR><BR>
+
+<div class="content">
+    <h2 style="margin-left: 25px;">jQuery & AJAX</h2>
+</div>
+
+
+<BR><BR>
+<div class="content">
+<dl class="faqs">
+
+<dt>1. ajax() მეთოდი</dt>
+<dd class='answer'>
+
+    ajax() მეთოდი გამოიყენება  AJAX (ასინქრონული HTTP) მოთხოვნის შესასრულებლად. მეთოდის სინტაქსი ასეთია
+             <code>
+                 $.ajax({name:value, name:value, ... })
+             </code>
+    მოთხოვნის  პარამეტრები განისაზღვრება ერთი ან რამდენიმე დასახელება:მნიშვნელობა წყვილის სახით. ქვემოთ  მოყვანილია
+    $.ajax მეთოდის პარამეტრი და მათი აღწერები
+    <ul>
+        <li>
+            <strong>url</strong> - მიუთითებს იმ მისამართს სადაც იგზავნება მოთხოვნა, გაჩუმების პრინციპით ეს
+            მისამართი არის მიმდინარე გვერდი.
+        </li>
+        <li>
+            <strong>async</strong> -  Boolean მნიშვნელობა, რომელიც მიუთითებს ასინქრონულია თუ არა მოთხოვნა.
+            გაჩუმების პრინციპით არის true.
+        </li>
+        <li>
+            <strong>data</strong> - მიუთითებს გასაგზავნ მონაცემებს
+        </li>
+        <li>
+            <strong>type</strong> - მიუთითებს მოთხოვნის ტიპს (GET ან POST)
+        </li>
+        <li>
+            <strong>contentType</strong> - გასაგზავნი ინფორმაციის ტიპი, გაჩუმების პრინციპით არის
+            "application/x-www-form-urlencoded; charset=UTF-8"
+        </li>
+        <li>
+            <strong>dataType</strong> - სერვერიდან მოსული პასუხის ტიპი (xml, json, script, html)
+        </li>
+        <li>
+            <strong>timeout</strong> - მოთხოვნის შესრულების დროის ლიმიტი მილიწამებში.
+        </li>
+        <li>
+            <strong>beforeSend()</strong> - ფუნქცია, რომელიც უნდა შესრულდეს მოთხოვნის გაგზავნის წინ.
+        </li>
+        <li>
+            <strong>success</strong> - ფუნქცია, რომელიც უნდა შესრულდეს თუ მოთხოვნა წარმატებით შესრულდება
+        </li>
+        <li>
+            <strong>error</strong> - ფუნქცია, რომელიც უნდა შესრულდეს თუ მოთხოვნა ვერ შესრულდება
+        </li>
+        <li>
+            <strong>complete</strong> - ფუნქცია, რომელიც უნდა შესრულდეს როდესაც მოთხოვნის შესრულება დამთავრდება
+            (error და success ფუნქციების შემდეგ)
+        </li>
+    </ul>
+
+             <code>
+                         $.ajax({<br>
+                         &nbsp;&nbsp;&nbsp;url: "demo_test.txt", // მისამართი სადაც იგზავნება მოთხოვნა<br>
+                         &nbsp;&nbsp;&nbsp;type: "post", // მოთხოვნის ტიპი<br>
+                         &nbsp;&nbsp;&nbsp;async : false, // ასინქრონულობა, ამ შემთხვევაში არაასინქრონული მოთხოვნა<br>
+                         &nbsp;&nbsp;&nbsp;data: {status: status, name: name}, // გასაგზავნი ინფორმაცია<br>
+                         &nbsp;&nbsp;&nbsp;dataType : "json", // საპასუხო ინფორმაციის ტიპი<br>
+                         &nbsp;&nbsp;&nbsp;timeout: 3000, // მოთხოვნის შესრულების დროის ლიმიტი, 3 წამი<br>
+                         &nbsp;&nbsp;&nbsp;beforeSend : function (){ // მოთხოვნის გაგზავნამდე<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// function code here<br>
+                         &nbsp;&nbsp;&nbsp;},<br>
+                         &nbsp;&nbsp;&nbsp;success : function (){ // წარმატების შემთხვევაში<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// function code here<br>
+                         &nbsp;&nbsp;&nbsp;},<br>
+                         &nbsp;&nbsp;&nbsp;error : function (){ // შეცდომის შემთხვევაში<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// function code here<br>
+                         &nbsp;&nbsp;&nbsp;},<br>
+                         &nbsp;&nbsp;&nbsp;complete : function (){ // მოთხოვნის დასრულების შემდეგ<br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// function code here<br>
+                         &nbsp;&nbsp;&nbsp;}<br>
+                         });
+                     </code>
+
+</dd>
+
+<dt>2. load() მეთოდი </dt>
+<dd class='answer'>
+
+    load() მეთოდი ტვირთავს მონაცემებს სერვერიდან და ათავსებს მათ ამორჩეულ ელემენტში.   load() მეთოდის სინტაქსი
+    ასეთია
+             <code>
+                 $(selector).load(url,data,function(response,status,xhr))
+             </code>
+
+    <ul>
+        <li>
+            <strong>url</strong> - განსაზღვრავს URL-ს რომლიც ჩატვირთვაც გვინდა (აუცილებელია მითითება)
+        </li>
+        <li>
+            <strong>data</strong> - განსაზღვრავს მონაცემებს რომელიც მოთხოვნასთან ერთად გაიგზავნება სერვერზე
+            (არააუცილებელი).
+        </li>
+        <li>
+            <strong>function(response,status,xhr)</strong> -  განსაზღვრავს საპასუხო ფუნქციას რომელიც შესრულდება
+            მაშინ, როდესაც load() მეთოდის მუშაობა დასრულდება (აარააუცილებელი).
+            <ul>
+                <li><strong>response</strong> - მოთხოვნის შედეგად მიღებული ინფორმაცია</li>
+                <li>
+                    <strong>status</strong> - შეიცავს მოთხოვნის სტატუსს ("success", "notmodified", "error",
+                    "timeout", ან "parsererror")
+                </li>
+                <li><strong>xhr</strong> - შეიცავს XMLHttpRequest ობიექტს</li>
+            </ul>
+        </li>
+    </ul>
+
+    load() მეთოდის მარტივი მაგალითი
+             <code>
+                 $("button").click(function(){<br>
+                  &nbsp;&nbsp;&nbsp;$("#div1").load("demo_test.txt");<br>
+                 });
+             </code>
+    load() მეთოდის  მაგალითი, როდესაც მოთხოვნასთან ერთად იგზავნება მონაცემები
+             <code>
+                 $(document).ready(function(){<br>
+                 &nbsp;&nbsp;&nbsp;   $("input").keyup(function(){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt = $("input").val();<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("span").load("demo_ajax_gethint.asp", {<label>suggest: txt</label>});<br>
+                 &nbsp;&nbsp;&nbsp;   });<br>
+                 });
+             </code>
+    load() მეთოდის  მაგალითი საპასუხო ფუნქციით
+             <code>
+                 $(document).ready(function(){<br>
+                 &nbsp;&nbsp;&nbsp;   $("button").click(function(){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       $("div").load("demo_cd_catalog.xml",function(response, status){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           if (status == "success"){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              alert($(response))<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           }<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       });<br>
+                 &nbsp;&nbsp;&nbsp;   });<br>
+                });
+             </code>
+
+</dd>
+
+<dt>3. get() და post() მეთოდი </dt>
+<dd class='answer'>
+
+    get() მეთოდი ტვირთავს მონაცემებს სერვერიდან HTTP GET ტიპის მოთხოვნით. get() მეთოდის სინტაქსი
+    ასეთია
+            <code>
+                 $.get(URL,data,function(data,status,xhr),dataType)
+            </code>
+    <ul>
+        <li>
+            <strong>url</strong> - განსაზღვრავს URL-ს რომელსაც გვინდა რომ მივმართოთ მოთხოვნით (აუცილებელია მითითება)
+        </li>
+        <li>
+            <strong>data</strong> - განსაზღვრავს მონაცემებს რომელიც მოთხოვნასთან ერთად გაიგზავნება სერვერზე
+            (არააუცილებელი).
+        </li>
+        <li>
+            <strong>function(response,status,xhr)</strong> -  განსაზღვრავს  ფუნქციას რომელიც შესრულდება
+            მაშინ თუ მოთხოვნა წარმატებით შესრულდება
+            <ul>
+                <li><strong>response</strong> - მოთხოვნის შედეგად მიღებული ინფორმაცია</li>
+                <li>
+                    <strong>status</strong> - შეიცავს მოთხოვნის სტატუსს ("success", "notmodified", "error",
+                    "timeout", ან "parsererror")
+                </li>
+                <li><strong>xhr</strong> - შეიცავს XMLHttpRequest ობიექტს</li>
+            </ul>
+        </li>
+        <li>
+            <strong>dataType</strong> -  განსაზღვრავს  სერვერიდან მოსული მონაცემების ტიპს, შესაძლო მნიშვნელობებია:
+            <ul>
+                <li><strong>xml</strong> - XML დოკუმენტი</li>
+                <li><strong>html</strong> -HTML დოკუმენტი </li>
+                <li><strong>text</strong> - ტექსტური სტრიქონი</li>
+                <li>
+                    <strong>script</strong> - პასუხი გაეშვება როგორც JavaScript და დაბრუნდება სტრიქონული სახით
+                </li>
+                <li>
+                    <strong>json</strong> -  პასუხი გაეშვება როგორც JSON და დაბრუნდება როგორც JavaScript ობიექტი
+                </li>
+                <li><strong>jsonp</strong> -  პასუხი გაეშვება როგორც JSON, URL-ში დაემატება "?callback=?"  და
+                    საპასუხო ფუნქცია შესრულდება ისე.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    ნალოგიური შინაარსისაა post() მეთოდიც.
+
+
+</dd>
+
+<dt>4. serialize() მეთოდი</dt>
+<dd class='answer'>
+
+    serialize() მეთოდი ფორმის ელელემენტების მნიშვნელობებისაგან ქმნის ტექსტურ სტრიქონს. სტრიქონში შეიძლება
+    გაერთიანდეს ერთი ან რამდენიმე ელემენტის მნიშვნელობები (input და/ან text area). სერიალიზებული მნიშვნელობები
+    შესაძლებელია გამოყენებულ იქნეს კონკრეტული AJAX მოთხოვნისათვის საჭირო URL მისამართში. სინტაქსი ასეთია
+            <code>
+                $(selector).serialize()
+            </code>
+    კონკრეტული მაგალითი
+            <code>
+                &lt;script>
+                 &nbsp;&nbsp;&nbsp;   $(document).ready(function(){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       $("button").click(function(){<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;          $("div").text($("form").serialize());<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       });<br>
+                 &nbsp;&nbsp;&nbsp;});<br>
+                &lt;/script><br><br>
+                &lt;form action=""><br>
+                &nbsp;&nbsp;&nbsp;  First name: &lt;input type="text" name="FirstName" value="Mickey"><br>
+                &nbsp;&nbsp;&nbsp;  Last name: &lt;input type="text" name="LastName" value="Mouse"><br>
+                &lt;/form><br><br>
+                &lt;button>Serialize form values&lt;/button><br><br>
+                &lt;div>&lt;/div> // ამ ელემენტში ჩაიწერება FirstName=Mickey&LastName=Mouse
+
+            </code>
+
+</dd>
+
+<dt>5. serializeArray() მეთოდი</dt>
+<dd class='answer'>
+
+    serializeArray() მეთოდი, ფორმის ელელემენტების მნიშვნელობებისაგან  ქმნის ობიექტების მასივს (დასახელება და
+    მნიშვნელობა). მასივში შეიძლება შევიდეს ერთი ან რამდენიმე ელემენტის მნიშვნელობები (input და/ან text area).
+            <code>
+                $(selector).serializeArray()
+            </code>
+    კონკრეტული მაგალითი
+            <code>
+                &lt;script><br>
+                $(document).ready(function(){<br>
+                &nbsp;&nbsp;&nbsp;    $("button").click(function(){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        var x = $("form").serializeArray();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        $.each(x, function(i, field){<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            $("#results").append(field.name + ":" + field.value + " ");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        });<br>
+                &nbsp;&nbsp;&nbsp;    });<br>
+                });
+                &lt;/script><br><br>
+                &lt;form action=""><br>
+                &nbsp;&nbsp;&nbsp;  First name: &lt;input type="text" name="FirstName" value="Mickey"><br>
+                &nbsp;&nbsp;&nbsp;  Last name: &lt;input type="text" name="LastName" value="Mouse"><br>
+                &lt;/form><br><br>
+                &lt;button>Serialize form values&lt;/button><br><br>
+                &lt;div id="results">&lt;/div> // ამ ელემენტში ჩაიწერება FirstName:Mickey LastName:Mouse
+
+            </code>
+
+</dd>
+
+</dl>
+
+</div>
+
+
+<BR><BR><BR>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(".faqs dd").hide();
+    $(".faqs dt").click(function () {
+        $(this).next(".faqs dd").slideToggle(500);
+        $(this).toggleClass("expanded");
+    });
+</script>
+
+</body></html>
