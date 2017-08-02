@@ -1,4 +1,4 @@
-# jQuery/Ajax
+# jQuery/Ajax ცნობარი
 ## სარჩევი
 * jQuery
   * რა არის jQuery ?
