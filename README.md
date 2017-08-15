@@ -22,4 +22,6 @@
   * get() და post() მეთოდი
   * serialize() მეთოდი
   * serializeArray() მეთოდი
+  
+  
 
