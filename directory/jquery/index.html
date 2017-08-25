@@ -63,6 +63,7 @@
     </ul>
     გადმოწერილი ბიბლიოთეკა არის ცალკე ფაილი და მას უნდა დავუკავშიორდეთ html &lt;script > ტეგით
     (ტეგი უნდა ჩაჯდეს &lt;head > სექციაში)
+
             <code>
                 &lt;head><br>
                    &nbsp; &nbsp;&nbsp;&lt;script src="jQuery-3.1.1.min.js">&lt;/script ><br>
@@ -1386,7 +1387,7 @@ event.which თვისება აბრუნებს კლავიატ
 <dt>11. ეფექტები</dt>
 <dd class='answer'>
 
-<h2>.hide()</h2>
+<h2>hide()</h2>
 hide() მეთოდი შინაარსით იგივეა რაც css თვისება display:none და მალავს ამორჩეულ ელემენტს. ამ მეთოდის
 საშუალებით დამალული ელემენტების გამოსაჩენად გამოიყენება მეთოდი show().
             <code>
@@ -1395,26 +1396,26 @@ hide() მეთოდი შინაარსით იგივეა რა�
                 });
             </code>
 
-<h2>.show()</h2>
+<h2>show()</h2>
 show() მეთოდი აჩენს jQuery-ს მეთოდებით და CSS display:none თვისებით დამალულ ელემენტებს.
 <strong>css visibility:hidden - ამთვისებით დამალულ ელემენტებს show() მეთოდი ვერ გამოაჩენს</strong>
-            <code>
-                $("button").click(function(){  <br>
-                &nbsp;&nbsp;&nbsp;    $("p").show();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){  <br>
+        &nbsp;&nbsp;&nbsp;    $("p").show();<br>
+        });
+    </code>
 
-<h2>.toggle()</h2>
+<h2>toggle()</h2>
 toggle() მეთოდი არის hide() და show() მეთოდების გადამრთველი. ეს მეთოდი ამოწმებს ამორჩეული ელემენტის
 ხილვადობას და ასრულებს show()-ს თუ ელემენტი დამალულია  და ასრულებს hide()-ს  თუ ელემენტი არ არის
 დამალული.
-            <code>
-                $("button").click(function(){  <br>
-                &nbsp;&nbsp;&nbsp;    $("p").toggle();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){  <br>
+        &nbsp;&nbsp;&nbsp;    $("p").toggle();<br>
+        });
+    </code>
 
-<h2>.animate()</h2>
+<h2>animate()</h2>
 animate() მეთოდი ასრულებს ანიმაციას  CSS თვისებების გამოყენებით. იმისათვის რათა შეიქმნას ანიმაციის ეფექტი
 animate() მეთოდი CSS თვისებებს ცვლის დროის მცირე მონაკვეთის ინტერვალებით. <strong>შესაძლებელია
     მხოლოდ ციფრული მნიშვნელობების ანიმაცია (მაგ: margin:30px), სტრიქონული მნიშვნელობების ანიმაცია შეუძლებელია
@@ -1427,150 +1428,188 @@ animate() მეთოდი CSS თვისებებს ცვლის დ
             </code>
 ესაა იმ css თვისებების ჩამონათვალი, რომელთა შეცვლაც შესაძლებელია ანიმაციით
 <ul>
-    <li><a target="_blank" href="#">backgroundPositionX</a></li>
-    <li><a target="_blank" href="#">backgroundPositionY</a></li>
-    <li><a target="_blank" href="#">borderWidth</a></li>
-    <li><a target="_blank" href="#">borderBottomWidth</a></li>
-    <li><a target="_blank" href="#">borderLeftWidth</a></li>
-    <li><a target="_blank" href="#">borderRightWidth</a></li>
-    <li><a target="_blank" href="#">borderTopWidth</a></li>
-    <li><a target="_blank" href="#">borderSpacing</a></li>
-    <li><a target="_blank" href="#">margin</a></li>
-    <li><a target="_blank" href="#">marginBottom</a></li>
-    <li><a target="_blank" href="#">marginLeft</a></li>
-    <li><a target="_blank" href="#">marginRight</a></li>
-    <li><a target="_blank" href="#">marginTop</a></li>
-    <li><a target="_blank" href="#">outlineWidth</a></li>
-    <li><a target="_blank" href="#">padding</a></li>
-    <li><a target="_blank" href="#">paddingBottom</a></li>
-    <li><a target="_blank" href="#">paddingLeft</a></li>
-    <li><a target="_blank" href="#">paddingRight</a></li>
-    <li><a target="_blank" href="#">paddingTop</a></li>
-    <li><a target="_blank" href="#">height</a></li>
-    <li><a target="_blank" href="#">width</a></li>
-    <li><a target="_blank" href="#">maxHeight</a></li>
-    <li><a target="_blank" href="#">maxWidth</a></li>
-    <li><a target="_blank" href="#">minHeight</a></li>
-    <li><a target="_blank" href="#">minWidth</a></li>
-    <li><a target="_blank" href="#">fontSize</a></li>
-    <li><a target="_blank" href="#">bottom</a></li>
-    <li><a target="_blank" href="#">left</a></li>
-    <li><a target="_blank" href="#">right</a></li>
-    <li><a target="_blank" href="#">top</a></li>
-    <li><a target="_blank" href="#">letterSpacing</a></li>
-    <li><a target="_blank" href="#">wordSpacing</a></li>
-    <li><a target="_blank" href="#">lineHeight</a></li>
-    <li><a target="_blank" href="#">textIndent</a></li>
+    <li>backgroundPositionX</li>
+    <li>backgroundPositionY</li>
+    <li>borderWidth</li>
+    <li>borderBottomWidth</li>
+    <li>borderLeftWidth</li>
+    <li>borderRightWidth</li>
+    <li>borderTopWidth</li>
+    <li>borderSpacing</li>
+    <li>margin</li>
+    <li>marginBottom</li>
+    <li>marginLeft</li>
+    <li>marginRight</li>
+    <li>marginTop</li>
+    <li>outlineWidth</li>
+    <li>padding</li>
+    <li>paddingBottom</li>
+    <li>paddingLeft</li>
+    <li>paddingRight</li>
+    <li>paddingTop</li>
+    <li>height</li>
+    <li>width</li>
+    <li>maxHeight</li>
+    <li>maxWidth</li>
+    <li>minHeight</li>
+    <li>minWidth</li>
+    <li>fontSize</li>
+    <li>bottom</li>
+    <li>left</li>
+    <li>right</li>
+    <li>top</li>
+    <li>letterSpacing</li>
+    <li>wordSpacing</li>
+    <li>lineHeight</li>
+    <li>textIndent</li>
 </ul>
 
-<h2>.clearQueue()</h2>
+<h2>clearQueue()</h2>
 clearQueue()მ ეთოდი შლის ყველა იმ პროცესს, რომელიც ჯერ არ დაწყებულა მაგრამ მოვლენის დამმუშავებელში
 არის აღწერილი და ქმედებათა რიგში რაღაც კონკრეტული ადგილი აქვს (Queue - რიგი, ჯერი). მაგალითად
 გვაქვს ორი ღილაკი #start და #stop, #start-ზე დაჭერისას იწყება ამორჩეული ელემენტის ზომების შეცვლის
 პროცესი, ეს პროცესი შედგება 4 ეტაპისაგან, ამ პროცესის დროს თუ დავაწვებით #stop ღილაკს, მაშინ პროცესი
 შეჩერდება.
 
-            <code>
-                $("#start").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 1500);<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 1500);<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 100}, 1500);<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 100}, 1500);<br>
-                });<br>
-                $("#stop").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").clearQueue();<br>
-                });
-            </code>
+    <code>
+        $("#start").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 1500);<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 1500);<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({height: 100}, 1500);<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({width: 100}, 1500);<br>
+        });<br>
+        $("#stop").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").clearQueue();<br>
+        });
+    </code>
 
-<h2>.delay()</h2>
+<h2>delay()</h2>
 delay() მეთოდი ნიშნავს დროის მთვლელს, რომლის მიხედვითაც ხდება  ქმედებათა რიგში შემდეგი ქმედების
 შესრულების გადადება (delay - შეყოვნება, გადადება, გადავადება).
-            <code>
-                $("button").click(function(){<br>
-                 &nbsp;&nbsp;&nbsp;   $("#div1").delay("slow").fadeIn();<br>
-                 &nbsp;&nbsp;&nbsp;   $("#div2").delay("fast").fadeIn();<br>
-                 &nbsp;&nbsp;&nbsp;   $("#div3").delay(800).fadeIn();<br>
-                 &nbsp;&nbsp;&nbsp;   $("#div4").delay(2000).fadeIn();<br>
-                 &nbsp;&nbsp;&nbsp;   $("#div5").delay(4000).fadeIn();<br>
-                 });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+         &nbsp;&nbsp;&nbsp;   $("#div1").delay("slow").fadeIn();<br>
+         &nbsp;&nbsp;&nbsp;   $("#div2").delay("fast").fadeIn();<br>
+         &nbsp;&nbsp;&nbsp;   $("#div3").delay(800).fadeIn();<br>
+         &nbsp;&nbsp;&nbsp;   $("#div4").delay(2000).fadeIn();<br>
+         &nbsp;&nbsp;&nbsp;   $("#div5").delay(4000).fadeIn();<br>
+         });
+    </code>
 
-<h2>.finish()</h2>
+<h2>finish()</h2>
 finish() მეთოდი აჩერებს მიმდინარე ანიმაციებს, შლის რიგში მდგომ ყველა ანიმაციას და პირდაპირ აბრუნებს იმ
 შედეგს რაც ბოლო ანიმაციის შესრულების შემდეგ უნდა მიღებულიყო.
-            <code>
-                $("#start").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
-                });<br>
-                $("#complete").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").finish();<br>
-                });
-            </code>
+    <code>
+        $("#start").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
+        });<br>
+        $("#complete").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").finish();<br>
+        });
+    </code>
 
-<h2>.stop()</h2>
+<h2>stop()</h2>
 stop() ეთოდი  აჩერებს მიმდინარე ანიმაციას და პროცესი გრძელდება შემდეგი ანიმაციიდან.
-            <code>
-                $("#start").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
-                &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
-                });<br>
-                $("#stop").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("div").stop();<br>
-                });
-            </code>
+    <code>
+        $("#start").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({height: 300}, 3000);<br>
+        &nbsp;&nbsp;&nbsp;    $("div").animate({width: 300}, 3000);<br>
+        });<br>
+        $("#stop").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("div").stop();<br>
+        });
+    </code>
 
-<h2>.fadeIn()</h2>
+<h2>fadeIn()</h2>
 fadeIn() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს (opacity -  გამუქება), სიმკრთალიდან ანუ
 უხილავობიდან სიმუქისაკენ ანუ ხილვადობისაკენ.
-            <code>
-                $("button").click(function(){ <br>
-                &nbsp;&nbsp;&nbsp;    $("p").fadeIn();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){ <br>
+        &nbsp;&nbsp;&nbsp;    $("p").fadeIn();<br>
+        });
+    </code>
 
-<h2>.fadeOut()</h2>
+<h2>fadeOut()</h2>
 fadeOut() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს (opacity -  გამუქება), სიმუქიდან ანუ
 ხილვადობიდან სიმკრთალისკენ ანუ  უხილავობისკენ .
-            <code>
-                $("button").click(function(){ <br>
-                &nbsp;&nbsp;&nbsp;    $("p").fadeOut();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){ <br>
+        &nbsp;&nbsp;&nbsp;    $("p").fadeOut();<br>
+        });
+    </code>
 
-<h2>.fadeTo()</h2>
+<h2>fadeTo()</h2>
 fadeTo() მეთოდი ეტაპობრივად ცვლის ელემენტის სიმუქეს  სიმუქის განსაზღვრულ კოეფიციენტამდე
-            <code>
-                $("button").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;   $("p").fadeTo(1000, 0.4);<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;   $("p").fadeTo(1000, 0.4);<br>
+        });
+    </code>
 
-<h2>.fadeToggle()</h2>
+<h2>fadeToggle()</h2>
 fadeToggle() მეთოდი არის fadeIn() and fadeOut() მეთოდების გადამრთველი. თუ ელემენტი არის მკრთალი
 fadeToggle() მეთოდი გაამუქებს მას, ხოლო თუ ელემენტი არის მუქი - გაამკრთალებს.
-            <code>
-                $("button").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("#div1").fadeToggle();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("#div1").fadeToggle();<br>
+        });
+    </code>
 
-<h2>.slideDown()</h2>
+<h2>slideDown()</h2>
 slideDown() მეთოდი ჩამოშლის (გამოაჩენს) ამორჩეულ ელემენტს. ეს მეთოდი მუშაობს jQuery-ს მეთოდებით
 და css display:none მეთოდით დამალულ ელემენტებთან.(არ მუშაობს css visibility:hidden მეთოდთან).
-            <code>
-                $("button").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;   $("p").slideDown();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;   $("p").slideDown();<br>
+        });
+    </code>
 
-<h2>.slideUp()</h2>
+<h2>slideUp()</h2>
 slideUp() მეთოდი კეცავს (დამალავს) ამორჩეულ ელემენტს.
-            <code>
-                $("button").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;   $("p").slideUp();<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;   $("p").slideUp();<br>
+        });
+    </code>
+
+<h2>slideToggle()</h2>
+slideToggle()  მეთოდი არის  slideUp() და slideDown()  ეფექტების გადამრთველი. მეთოდი ამოწმებს ელემენტის ხილვადობას, თუ ელემენტი დამალულია ეშვება slideDown() ფუნქცია ხოლო თუ არ არის დამალული მაშინ ეშვება  slideUp() ფუნქცია. მეთოდის სინტაქსი ასეთია  
+<code>
+        $(selector).slideToggle(speed,easing,callback)
+</code>  
+<ul>
+    <li>
+       speed პარამეტრის მითითება ნებაყოფლობითია. იგი განსაზღვრავს ეფექტის ხანგრძლივობას. 
+       ნაგულისხმეობის პრინციპით მისი მნიშვნელობა არის 400 მილიწამი. შესაძლო მნიშვნელობებია
+       <ul>
+           <li>მილიწამების რაოდენობა რიცხვებში</li>
+           <li>"slow" ანუ ნელა</li>
+           <li>"fast" ანუ სწრაფად</li>
+       </ul>
+    </li>
+    <li>
+        easing პარამეტრის მითითება ნებაყოფლობითია. იგი განსაზღვრავს ეფექტის აჩქარებას. მთლიანი ხანგრძლივობის სხვადასხვა მომენტებისათვის. ნაგულისხმეობის პრინციპით მისი მნიშვნელობა არის "swing". შესაძლო მნიშვნელობებია
+        <ul>
+           <li>"swing"</li>
+           <li>"linear"</li>
+        </ul>
+    </li>
+    <li>
+        callback პარამეტრის მითითება ნებაყოფლობითია. იგი განსაზღვრავს ფუნქციას, რომელიც უნდა დაეშვას ეფექტის დასრულების შემდეგ
+    </li>
+</ul>
+მოვიყვანოთ კონკრეტული მაგალითი
+<code>
+    <pre>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").slideToggle();
+    });
+});
+    </pre>
+</code>
+
 
 
 <h1>jQuery Callback ფუნქციები</h1>
@@ -1581,29 +1620,29 @@ slideUp() მეთოდი კეცავს (დამალავს) ა�
 (Callback -  დაბრუნება, კომპიუტერულ მეცნიერებაში – კოდი, რომელიც გადაიცემა როგორც სხვა კოდის პარამეტრი).
 callback ფუნქცია შესრულდება მას შემდეგ რაც ეფექტი დასრულდება. ტიპიური სინტაქსი ასეთია <strong>
     $(selector).hide(speed,callback);</strong>
-            <code>
-                $("button").click(function(){<br>
-                &nbsp;&nbsp;&nbsp;    $("p").hide("slow", function(){<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    alert("The paragraph is now hidden");<br>
-                &nbsp;&nbsp;&nbsp;    });<br>
-                });
-            </code>
+    <code>
+        $("button").click(function(){<br>
+        &nbsp;&nbsp;&nbsp;    $("p").hide("slow", function(){<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    alert("The paragraph is now hidden");<br>
+        &nbsp;&nbsp;&nbsp;    });<br>
+        });
+    </code>
 
 <h1>jQuery ჯაჭვური მეთოდები</h1>
 
 jQuery-ში შესაძლებელია ერთმანეთს მიებას ქმედებები/მეთოდები. ეს გადაბმები საშუალებას გვაძლევს, რომელიმე
 ელემენტთან მიმართებაში გამოვიყენოთ რამოდენიმე jQuery მეთოდი  ერთი ჩანაწერის საშუალებით. ამისათვის
 საჭიროა ესა თუ ის ქმედება უბრალოდ მივამატოთ მის წინა ქმედებას
-            <code>
-                $("#p1").css("color", "red").slideUp(2000).slideDown(2000);
-            </code>
+    <code>
+        $("#p1").css("color", "red").slideUp(2000).slideDown(2000);
+    </code>
 როდესაც ქმედებათა გადაბმის შედეგად მიღებული ჯაჭვი საკმაოდ გრძელია, შესაძლებელია ასეთი სინტაქსის გამოყენებაც
-            <code>
-                $("#p1").css("color", "red")<br>
-                &nbsp;&nbsp;&nbsp;   .slideUp(2000)<br>
-                &nbsp;&nbsp;&nbsp;  ... <br>
-                &nbsp;&nbsp;&nbsp;  .slideDown(2000);
-            </code>
+    <code>
+        $("#p1").css("color", "red")<br>
+        &nbsp;&nbsp;&nbsp;   .slideUp(2000)<br>
+        &nbsp;&nbsp;&nbsp;  ... <br>
+        &nbsp;&nbsp;&nbsp;  .slideDown(2000);
+    </code>
 
 </dd>
 
@@ -1835,154 +1874,6 @@ filter() მეთოდის საწინააღმდეგო მეთ
                 &nbsp;&nbsp;&nbsp;    $("p").not(".intro");<br>
                 });
             </code>
-
-</dd>
-
-<dt>13. სხვადასხვა ფუნქციები</dt>
-<dd class='answer'>
-
-<h2>data() მეთოდი</h2>
-
-ეს მეთოდი ამაგრებს ინფორმაციას ამორჩეულ ელემენტს, აგრეთვე შესაძლებელია ელემენტთან დაკავშირებული ინფორმაციის მიღებაც. 
-
-<h3>ინფორმაცის მიღება</h3>
-
-ამორჩეული ელემენტიდან ინფორმაციის მიღების სინტაქსი ასეთია
-<code>
-    $(selector).data(name)
-</code>
-
-<h3>ინფორმაცის მიმაგრება</h3>
-
-ამორჩეულ ელემენტზე ინფორმაციის მიმაგრების სინტაქსი ასეთია
-<code>
-    $(selector).data(name,value)
-</code>
-
-მაგალითისათვის &lt;div> ელემენტს მივამაგროთ რაიმე ინფორმაცია და შემდეგ დავაბრუნოთ იგი
-<code>
-    <pre>
-$("#btn1").click(function(){
-    $("div").data("greeting", "Hello World");
-});
-$("#btn2").click(function(){
-    alert($("div").data("greeting")); // alert შეტყობინებაში გამოვა ტექსი "Hello World"
-});
-    </pre>
-</code>
-
-<h2>each() მეთოდი</h2>
-
-მეთოდი განსაზღვრავს ფუნქციას, რომელიც უნდა შესრულდეს <b>თითოეული</b> ამორჩეული ელემენტისათვის.  ციკლის ნაადრევად შესაჩერებლად შესაძლებელია <b>return false</b> ჩანაწერის გამოყენება. მეთოდის სინტაქსი ასეთია
-<code>
-    $(selector).each(function(index,element))
-</code>
-მაგალითისათვის დავაბრუნოთ ყველა &lt;li> ელემენტის ტექსტი
-<code>
-    <pre>
-$("button").click(function(){
-    $("li").each(function(){
-        alert($(this).text())
-    });
-});
-    </pre>
-</code>
-
-<h2>get() მეთოდი</h2>
-
-მეთოდი აბრუნებს DOM-ის ელემენტს მითითებული სელექთორის მიხედვით. მეთოდის სინტაქსი ასეთია
-<code>
-    $(selector).get(index)
-</code>
-<b>index</b> პარამეტრის მითითება ნებაყოფლობითია, იგი განსაზღვრავს თუ მერამდენე ელემენტის დაბრუნება გვსურს ამორჩეული ელემენტების სიმრავლიდან.  მაგალითად დავაბრუნოთ პირველი &lt;p> ელემენტის დასახელება და ტექსტი
-<code>
-    <pre>
-$("button").click(function(){
-    var x = $("p").get(0);
-    $("div").text(x.nodeName + ": " + x.innerHTML);
-});
-    </pre>
-</code>
-
-<h2>index() მეთოდი</h2>
-
-მეთოდი აბრუნებს ელემენტის ინდექსს ამორჩეული ელემენტების სიმრავლიდან. თუ ელემენტი ვერ მიოიძებნება მეთოდი აბრუნებს -1-ს. 
-
-<h3>ელემენტის ინდექსი მეზობელ ელემენტებთან მიმართებაში</h3>
-
-დავაბრუნოთ პირველივე დამთხვევის შედეგად ამორჩეული ელემენტის ინდექსი მეზობელ ელემენტებთან მიმართებაში, სინტაქსი ასეთია
-<code>
-    $(selector).index()
-</code>
-კონკრეტული მაგალითი კი ასეთი
-<code>
-    <pre>
-$(document).ready(function(){
-    $("li").click(function(){
-        alert($(this).index());
-    });
-});
-    </pre>
-</code>
-
-<h3>ელემენტის ინდექსი სელექთორებთან მიმართებაში</h3>
-
-<code>
-    $(selector).index(element)
-</code>
-მაგალითისათვის დავაბრუნოთ ელემენტის ინდექსი, რომელიც ჰყვება class="hot" ფილტრში და ამავე დროს მისი id="favorite".
-<code>
-    <pre>
-$(document).ready(function(){
-    $("button").click(function(){
-        alert($(".hot").index($("#favorite")));
-    });
-});
-    </pre>
-</code>
-
-<h2>param() მეთოდი</h2>
-
-მეთოდი ახდენს მასივის ან ობიექტის სერიალიზაციის პრეზენტაციას, ანუ ახდენს მასივის ან ობიექტის გასაღებებისა და მნიშვნელობების დალაგებას იმგვარად, რომ მათი გამოყენება შესაძლებელი იყოს მაგალითად URL მისამართში.
-<code>
-    <pre>
-$(document).ready(function(){
-    personObj = new Object();
-    personObj.firstname = "John";
-    personObj.lastname = "Doe";
-    personObj.age = 50;
-    personObj.eyecolor = "blue"; 
-    $("button").click(function(){
-        $("div").text($.param(personObj));
-    });
-});
-/*
-  შედეგი იქნება
-  firstname=John&lastname=Doe&age=50&eyecolor=blue
-*/
-    </pre>
-</code>
-
-<h2>toArray() მეთოდი</h2>
-
-მეთოდი ამორჩეულ ელემენტთა სიმრავლეს აქცევს მასივად. მაგალითად ამორჩეულ &lt;li> ელემენტთა სიმრავლეს მივმართოთ, როგორც მასივს
-<code>
-    <pre>
-$(document).ready(function(){
-    $("button").click(function(){
-        var i;
-        var x = $("li").toArray();
-        for (i = 0; i< x.length; i++) {
-            alert(x[i].innerHTML);
-        }
-    });
-});
-    </pre>
-</code>
-
-
-
-
 
 </dd>
 
